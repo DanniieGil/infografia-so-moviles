@@ -4,492 +4,717 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Instalación de SO móviles: Android e iOS</title>
-<meta name="description" content="Infografía interactiva sobre cómo se instala el sistema operativo en dispositivos Android e iOS. Sistemas Operativos II – Fundación Universitaria del Área Andina.">
+<meta name="description" content="Infografía interactiva académica: cómo se instala el sistema operativo en dispositivos Android e iOS. Sistemas Operativos II – Fundación Universitaria del Área Andina.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23132a4f'/%3E%3Crect x='20' y='12' width='24' height='40' rx='5' fill='none' stroke='%23fff' stroke-width='3.5'/%3E%3Cpath d='M26 32l4 4 8-8' fill='none' stroke='%234ade80' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f7fb; --card:#ffffff; --ink:#0f172a; --muted:#5b6476; --line:#e3e7ef;
-  --and:#16a34a; --and-soft:#e8f8ee; --and-ink:#0f5e2c;
-  --ios:#2563eb; --ios-soft:#e9f0ff; --ios-ink:#1e3a8a;
-  --warn:#b45309; --warn-soft:#fff4dc; --bad:#dc2626; --bad-soft:#fde8e8;
+  --bg:#f5f6f9; --paper:#ffffff; --ink:#14213d; --text:#2b3448; --muted:#606a7e; --line:#dfe3ea;
+  --navy:#132a4f; --navy-2:#1d3d6e; --gold:#c08a1e;
+  --and:#1a8f4a; --and-soft:#e7f6ec; --and-ink:#0f5e2c;
+  --ios:#2459d6; --ios-soft:#e8eefc; --ios-ink:#1a3a8a;
+  --warn:#a85a07; --warn-soft:#fff4df; --bad:#c62828; --bad-soft:#fdeaea;
   --accent:var(--and); --accent-soft:var(--and-soft); --accent-ink:var(--and-ink);
-  --shadow:0 1px 2px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.06);
-  --r:18px;
+  --shadow:0 1px 2px rgba(20,33,61,.05),0 6px 20px rgba(20,33,61,.06);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){
-  :root{--bg:#0b1020;--card:#121a2e;--ink:#e8ecf5;--muted:#9aa4b8;--line:#232d45;
-    --and-soft:#0f2a1c;--and-ink:#86efac;--ios-soft:#13234a;--ios-ink:#a5c3ff;
-    --warn-soft:#2d2210;--bad-soft:#2e1316;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25)}
+  :root{--bg:#0d1322;--paper:#141c2f;--ink:#eef2f9;--text:#d3d9e6;--muted:#97a1b5;--line:#26304a;
+    --and-soft:#10291b;--and-ink:#8ee0ad;--ios-soft:#14234a;--ios-ink:#a9c2ff;--warn-soft:#2c2111;--bad-soft:#2e1517;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25)}
 }
 body.ios{--accent:var(--ios);--accent-soft:var(--ios-soft);--accent-ink:var(--ios-ink)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .3s}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-code,.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.92em}
+code{font-family:var(--mono);font-size:.88em;background:var(--accent-soft);color:var(--accent-ink);padding:1px 6px;border-radius:5px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
-/* HERO */
-header.hero{background:radial-gradient(1200px 400px at 10% -10%,rgba(22,163,74,.35),transparent 60%),radial-gradient(900px 400px at 100% 0,rgba(37,99,235,.35),transparent 60%),#0b1226;color:#fff;padding:56px 0 88px}
-.kicker{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#a5b4fc;font-weight:700}
-.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.08;font-weight:800;margin:14px 0 16px;max-width:820px;letter-spacing:-.02em}
-.hero h1 .a{color:#4ade80}.hero h1 .i{color:#93b4ff}
-.hero p.lead{font-size:clamp(16px,2vw,19px);color:#cbd5e1;max-width:720px}
-.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.pill{font-size:13px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);padding:6px 12px;border-radius:999px;color:#e2e8f0}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px;max-width:720px}
-.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px 16px}
-.stat b{display:block;font-size:26px;font-weight:800}
-.stat span{font-size:13px;color:#cbd5e1}
+.inst{background:var(--navy);color:#dfe7f5;font-size:13px}
+.inst .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.emblem{width:34px;height:34px;flex:none}
+.inst b{color:#fff;font-weight:600}
+.inst .sep{opacity:.4}
+.inst .right{margin-left:auto;opacity:.85}
 
-/* SWITCH */
-.switch-bar{position:sticky;top:0;z-index:20;margin-top:-34px}
-.switch{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px;padding:6px;max-width:520px;margin:0 auto}
-.switch button{flex:1;border:0;background:transparent;color:var(--muted);font:600 16px Inter,sans-serif;padding:12px 10px;border-radius:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .25s}
-.switch button[aria-selected=true].b-and{background:var(--and);color:#fff}
-.switch button[aria-selected=true].b-ios{background:var(--ios);color:#fff}
-.switch svg{width:20px;height:20px}
+.hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:44px 0 56px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#f3d48b}
+.eyebrow:before{content:"";width:22px;height:2px;background:var(--gold)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4.6vw,48px);line-height:1.12;margin:14px 0 16px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:#7ee2a5}.hero h1 i{font-style:normal;color:#a9c4ff}
+.hero .lead{color:#cfd9ea;font-size:17px;max-width:600px}
+.byline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px;margin-top:26px;max-width:560px;font-size:14px}
+.byline div{border-left:2px solid var(--gold);padding-left:10px}
+.byline span{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#9fb0cc}
+.byline b{color:#fff;font-weight:600}
+.hero-art{display:flex;justify-content:center;gap:26px}
+.hero-art .phone{transform:rotate(-5deg)}
+.hero-art .phone.iph{transform:rotate(5deg) translateY(18px)}
 
-section{padding:46px 0 8px}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
-.num{font:700 13px "JetBrains Mono",monospace;color:var(--accent);background:var(--accent-soft);padding:4px 9px;border-radius:8px}
-h2{font-size:clamp(22px,3vw,30px);letter-spacing:-.01em}
-.sub{color:var(--muted);margin-bottom:22px;max-width:760px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.phone{width:178px;aspect-ratio:9/18.5;background:#0b0f19;border-radius:30px;padding:9px;box-shadow:0 18px 40px rgba(0,0,0,.35),inset 0 0 0 2px #2a3245;position:relative;flex:none}
+.phone .scr{width:100%;height:100%;border-radius:22px;overflow:hidden;position:relative;background:#fff;color:#14213d;display:flex;flex-direction:column;font-size:11px;line-height:1.35}
+.phone.and .scr:before{content:"";position:absolute;top:8px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#0b0f19;z-index:3}
+.phone.iph .scr:before{content:"";position:absolute;top:7px;left:50%;width:52px;height:15px;margin-left:-26px;border-radius:10px;background:#0b0f19;z-index:3}
+.sb{display:flex;justify-content:space-between;padding:8px 14px 4px;font-weight:600;font-size:9.5px}
+.sc{flex:1;display:flex;flex-direction:column;padding:10px 12px 14px;gap:7px}
+.sc.center{align-items:center;justify-content:center;text-align:center}
+.sc h5{font-size:13px;font-weight:700;font-family:var(--sans)}
+.sc .t{font-size:10.5px;color:#5b6476}
+.sc .btnp{margin-top:auto;align-self:stretch;text-align:center;border-radius:99px;padding:7px;font-weight:600;color:#fff;background:var(--sbtn,#1a73e8)}
+.sc .row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #eceef3}
+.tg{width:24px;height:13px;border-radius:9px;background:#c9ced8;position:relative}
+.tg:after{content:"";position:absolute;top:2px;left:2px;width:9px;height:9px;border-radius:50%;background:#fff}
+.tg.on{background:#1a8f4a}.tg.on:after{left:13px}
+.iph .tg.on{background:#34c759}
+.pbar{height:6px;border-radius:9px;background:#e4e7ee;overflow:hidden;align-self:stretch}
+.pbar i{display:block;height:100%;border-radius:9px;background:var(--sbar,#1a8f4a);animation:grow 2.4s ease-in-out infinite}
+@keyframes grow{from{width:8%}to{width:92%}}
+.scr.dark{background:#000;color:#e6e6e6}
+.scr.dark .t{color:#9aa0aa}
+.term-s{font-family:var(--mono);font-size:9px;line-height:1.5;color:#e6e6e6;text-align:left;align-self:stretch}
+.term-s .r{color:#ff6b6b}.term-s .g{color:#5ee08f}.term-s .y{color:#ffd36b}
+.menu-s div{font-family:var(--mono);font-size:9.5px;padding:5px 6px;color:#cfd3da}
+.menu-s div.sel{background:#2a4b7c;color:#fff}
+.bigic{width:58px;height:58px}
+.cap{font-size:9px;color:#9aa0aa;margin-top:4px}
 
-/* intro cards */
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.fact{padding:20px}
-.fact .ic{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:12px}
-.fact .ic svg{width:22px;height:22px}
-.fact h3{font-size:17px;margin-bottom:6px}
-.fact p{color:var(--muted);font-size:15px}
+.topnav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.topnav .wrap{display:flex;align-items:center;gap:14px;height:62px}
+.toc{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.toc::-webkit-scrollbar{display:none}
+.toc a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:13.5px;font-weight:500;padding:7px 10px;border-radius:8px}
+.toc a:hover{color:var(--ink);background:var(--bg)}
+.toc a.on{color:var(--accent-ink);background:var(--accent-soft);font-weight:600}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px;flex:none}
+.seg button{border:0;background:transparent;color:var(--muted);font-weight:600;font-size:14px;padding:7px 12px;border-radius:9px;cursor:pointer;display:flex;gap:7px;align-items:center}
+.seg button svg{width:17px;height:17px}
+.seg button[aria-pressed=true].a{background:var(--and);color:#fff}
+.seg button[aria-pressed=true].i{background:var(--ios);color:#fff}
 
-/* anatomy */
-.anat{padding:22px}
-.parts{display:flex;gap:6px;margin:6px 0 14px;flex-wrap:wrap}
-.part{flex:1 1 0;min-width:96px;border:2px solid transparent;border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;color:#fff;transition:transform .15s, box-shadow .2s, border-color .2s}
-.part small{display:block;font-weight:500;opacity:.9;font-size:12px;margin-top:3px}
+section{padding:52px 0 6px}
+.sh{display:flex;gap:12px;align-items:baseline;margin-bottom:8px}
+.sh .n{font-family:var(--serif);font-weight:700;font-size:24px;color:var(--accent)}
+h2{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:clamp(23px,3vw,31px);line-height:1.2}
+h3{font-family:var(--serif);color:var(--ink);font-weight:600}
+.intro{max-width:820px;margin-bottom:22px}
+.paper{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.cite{color:var(--muted)}
+figure{margin:0}
+figcaption{margin-top:12px;font-size:13.5px;color:var(--muted);max-width:880px}
+figcaption b{color:var(--ink);font-weight:600}
+
+.abstract{padding:24px 28px;border-left:4px solid var(--gold)}
+.abstract h3{font-size:20px;margin-bottom:8px}
+.abstract p{text-align:justify}
+.kw{margin-top:12px;font-size:14px}
+.kw b{color:var(--ink)}
+.objs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+.objs .paper{padding:18px 20px}
+.objs h4{font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
+.objs ol{padding-left:18px}
+
+.gloss{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gl{padding:18px}
+.gl .ic{width:40px;height:40px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:10px}
+.gl .ic svg{width:21px;height:21px}
+.gl h4{font-size:16px;color:var(--ink);margin-bottom:4px}
+.gl p{font-size:14.5px}
+
+.arch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;padding:24px}
+.stack{display:flex;flex-direction:column;gap:6px}
+.layer{border:0;cursor:pointer;border-radius:10px;padding:13px 16px;text-align:left;color:#fff;font-weight:600;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center;transition:transform .15s,box-shadow .2s}
+.layer small{font-weight:500;opacity:.85;font-size:12.5px;text-align:right}
+.layer:hover{transform:translateX(4px)}
+.layer.on{box-shadow:0 0 0 3px var(--paper),0 0 0 6px var(--accent)}
+.hwbar{border-radius:10px;padding:11px 16px;background:repeating-linear-gradient(45deg,#c7ccd6,#c7ccd6 8px,#d5d9e1 8px,#d5d9e1 16px);color:#2b3448;font-weight:600;font-size:14px;text-align:center;margin-top:6px}
+.ldetail{background:var(--accent-soft);border-radius:12px;padding:18px 20px;align-self:start}
+.ldetail h4{font-family:var(--serif);font-size:19px;color:var(--accent-ink);margin-bottom:6px}
+.ldetail ul{padding-left:18px;margin-top:8px}
+.hint{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin-top:12px}
+.hint svg{width:16px;height:16px;flex:none}
+
+.parts{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.part{flex:1 1 0;min-width:100px;border:0;border-radius:10px;padding:13px 8px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;color:#fff;transition:transform .15s}
+.part small{display:block;font-weight:500;font-size:11.5px;opacity:.9}
 .part:hover{transform:translateY(-2px)}
-.part.on{border-color:var(--ink);box-shadow:0 0 0 4px var(--accent-soft)}
-.part:focus-visible,.route-tab:focus-visible,.btn:focus-visible,.switch button:focus-visible,.q-opt:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.detail{background:var(--accent-soft);border-radius:12px;padding:16px 18px;min-height:76px}
-.detail b{color:var(--accent-ink)}
-.hint{font-size:13px;color:var(--muted);margin-top:10px}
+.part.on{box-shadow:0 0 0 3px var(--paper),0 0 0 6px var(--ink)}
+.pdetail{background:var(--accent-soft);border-radius:12px;padding:14px 18px;min-height:70px}
+.pdetail b{color:var(--accent-ink)}
 
-/* boot chain */
-.chain{display:flex;align-items:stretch;gap:8px;margin:8px 0 16px;flex-wrap:wrap}
-.link{flex:1 1 140px;border-radius:14px;padding:14px;background:var(--bg);border:2px solid var(--line);text-align:center;transition:all .35s}
-.link b{display:block;font-size:15px}
-.link span{font-size:12.5px;color:var(--muted)}
-.link .st{display:inline-block;margin-top:8px;font:600 12px "JetBrains Mono",monospace;padding:3px 8px;border-radius:6px;background:var(--line);color:var(--muted)}
-.link.ok{border-color:var(--and);background:var(--and-soft)}
-.link.ok .st{background:var(--and);color:#fff}
-.link.fail{border-color:var(--bad);background:var(--bad-soft)}
-.link.fail .st{background:var(--bad);color:#fff}
-.link.active{transform:scale(1.04);box-shadow:0 0 0 4px var(--accent-soft)}
-.arrow{align-self:center;color:var(--muted);font-weight:800}
-.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.btn{border:0;cursor:pointer;font:600 15px Inter,sans-serif;padding:11px 16px;border-radius:12px;background:var(--accent);color:#fff;display:inline-flex;gap:8px;align-items:center;transition:filter .2s, transform .1s}
-.btn:hover{filter:brightness(1.07)}.btn:active{transform:scale(.98)}
+.boot{padding:24px}
+.chain{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap;margin-bottom:16px}
+.lk{flex:1 1 130px;border:2px solid var(--line);background:var(--bg);border-radius:12px;padding:12px;text-align:center;transition:all .3s}
+.lk .lic{width:30px;height:30px;margin:0 auto 6px;color:var(--muted)}
+.lk b{display:block;color:var(--ink);font-size:14.5px}
+.lk span{font-size:12px;color:var(--muted)}
+.lk .st{display:inline-block;margin-top:7px;font:600 11.5px var(--mono);padding:2px 8px;border-radius:6px;background:var(--line);color:var(--muted)}
+.lk.ok{border-color:var(--and);background:var(--and-soft)}.lk.ok .st{background:var(--and);color:#fff}.lk.ok .lic{color:var(--and)}
+.lk.fail{border-color:var(--bad);background:var(--bad-soft)}.lk.fail .st{background:var(--bad);color:#fff}.lk.fail .lic{color:var(--bad)}
+.lk.act{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+.arr{align-self:center;color:var(--muted);font-weight:700}
+.ctrl{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;cursor:pointer;font-weight:600;font-size:14.5px;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;display:inline-flex;gap:8px;align-items:center}
+.btn:hover{filter:brightness(1.08)}
 .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .btn.bad{background:var(--bad)}
-.btn[disabled]{opacity:.45;cursor:not-allowed}
-.log{margin-top:14px;font:500 13.5px "JetBrains Mono",monospace;background:#0b1226;color:#cbd5e1;border-radius:12px;padding:14px 16px;min-height:96px;white-space:pre-wrap}
-.log .g{color:#4ade80}.log .r{color:#f87171}.log .y{color:#fbbf24}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.log{margin-top:14px;font:500 13px var(--mono);background:#0b1226;color:#cbd5e1;border-radius:10px;padding:14px 16px;min-height:104px;white-space:pre-wrap}
+.log .g{color:#5ee08f}.log .r{color:#ff7b7b}.log .y{color:#ffd36b}
 
-/* routes */
-.routes{display:grid;grid-template-columns:280px 1fr;gap:18px}
-.route-tabs{display:flex;flex-direction:column;gap:10px}
-.route-tab{text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:14px 16px;cursor:pointer;color:var(--ink);font:inherit;transition:all .2s}
-.route-tab .rt-k{font:700 12px "JetBrains Mono",monospace;color:var(--accent)}
-.route-tab b{display:block;font-size:16px;margin:3px 0}
-.route-tab span{font-size:13.5px;color:var(--muted)}
-.route-tab .lvl{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px}
+.rtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.rtab{text-align:left;border:1.5px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 16px;cursor:pointer;color:var(--text);transition:all .2s}
+.rtab .k{font:700 11.5px var(--mono);color:var(--accent);letter-spacing:.05em}
+.rtab b{display:block;color:var(--ink);font-size:15.5px;margin:2px 0}
+.rtab span.d{font-size:13px;color:var(--muted)}
+.lvl{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:99px}
 .lvl.easy{background:var(--and-soft);color:var(--and-ink)}.lvl.mid{background:var(--warn-soft);color:var(--warn)}.lvl.hard{background:var(--bad-soft);color:var(--bad)}
-.route-tab[aria-selected=true]{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.stepper{padding:22px;display:flex;flex-direction:column}
-.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:18px}
-.progress i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .35s}
-.step-head{display:flex;gap:14px;align-items:center;margin-bottom:10px}
-.step-n{width:46px;height:46px;flex:none;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:19px}
-.step-head h3{font-size:20px;line-height:1.25}
-.step-body{color:var(--ink);font-size:16px;min-height:96px}
-.step-body p{margin-bottom:8px}
-.term{margin-top:6px;font:500 13.5px "JetBrains Mono",monospace;background:#0b1226;color:#a7f3d0;border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre}
-.tools{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
-.chip{font-size:13px;font-weight:600;padding:5px 10px;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink)}
-.dots{display:flex;gap:8px;margin:16px 0}
-.dot{width:10px;height:10px;border-radius:50%;background:var(--line);border:0;cursor:pointer;padding:0}
-.dot.on{background:var(--accent);transform:scale(1.25)}
-.nav{display:flex;justify-content:space-between;gap:10px;margin-top:auto}
-.warnbox{display:flex;gap:12px;background:var(--warn-soft);border-left:5px solid var(--warn);border-radius:12px;padding:14px 16px;margin-top:14px;font-size:14.5px}
-.warnbox b{color:var(--warn)}
-
-/* compare */
-.cmp{overflow:hidden}
-.cmp table{width:100%;border-collapse:collapse;font-size:15px}
-.cmp th,.cmp td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-.cmp th{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--bg)}
-.cmp td:first-child{font-weight:700;width:24%}
-.cmp tr:last-child td{border-bottom:0}
-.tag-a{color:var(--and);font-weight:700}.tag-i{color:var(--ios);font-weight:700}
-.meter{display:flex;align-items:center;gap:10px;margin-top:6px}
-.meter .bar{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
-.meter .bar i{display:block;height:100%;border-radius:99px}
-
-/* quiz */
-.quiz{padding:22px}
-.q-text{font-size:18px;font-weight:700;margin-bottom:14px}
-.q-opts{display:grid;gap:10px}
-.q-opt{text-align:left;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:13px 15px;font:inherit;font-size:15.5px;cursor:pointer;transition:all .2s}
-.q-opt:hover:not([disabled]){border-color:var(--accent)}
-.q-opt.right{border-color:var(--and);background:var(--and-soft)}
-.q-opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.q-fb{margin-top:12px;font-size:14.5px;min-height:24px;color:var(--muted)}
-.q-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:10px;flex-wrap:wrap}
-.score{font-weight:700}
-
-footer{margin-top:56px;background:var(--card);border-top:1px solid var(--line);padding:30px 0 40px;font-size:14px;color:var(--muted)}
-footer h4{color:var(--ink);font-size:15px;margin-bottom:10px}
-footer ol{padding-left:18px;display:grid;gap:6px}
-footer .credit{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
-
+.rtab[aria-selected=true]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.player{display:grid;grid-template-columns:210px minmax(0,1fr) 220px;gap:26px;padding:26px}
+.tl{list-style:none;display:flex;flex-direction:column;gap:4px}
+.tl li button{width:100%;text-align:left;border:0;background:transparent;padding:9px 10px;border-radius:10px;cursor:pointer;display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px;font-weight:500}
+.tl li button i{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700}
+.tl li button.done i{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.tl li button.on{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+.tl li button.on i{background:var(--accent);border-color:var(--accent);color:#fff}
+.stepv{display:flex;flex-direction:column;min-width:0}
+.stepv .k{font:600 12px var(--mono);color:var(--accent);letter-spacing:.05em}
+.stepv h3{font-size:23px;margin:4px 0 10px}
+.stepv .body p{margin-bottom:8px}
+.term{margin-top:6px;font:500 13px var(--mono);background:#0b1226;color:#a7f3d0;border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre}
+.tools{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:7px;background:var(--accent-soft);color:var(--accent-ink)}
+.warnbox{display:flex;gap:10px;background:var(--warn-soft);border-left:4px solid var(--warn);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:14px}
+.warnbox svg{width:20px;height:20px;flex:none;color:var(--warn)}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:18px}
+.phonebox{display:flex;justify-content:center;align-items:flex-start}
+.phonebox .phone{width:200px}
 .fade{animation:fade .35s ease}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.cmp{overflow-x:auto}
+.cmp table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:620px}
+.cmp caption{text-align:left;padding:16px 18px 6px;font-size:13.5px;color:var(--muted);caption-side:top}
+.cmp caption b{color:var(--ink)}
+.cmp th,.cmp td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp thead th{font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);border-bottom:2px solid var(--ink)}
+.cmp tbody th{font-weight:600;color:var(--ink);width:24%}
+.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
+.meter{display:flex;align-items:center;gap:10px}
+.meter .bar{flex:1;height:8px;border-radius:9px;background:var(--line);overflow:hidden}
+.meter .bar i{display:block;height:100%;border-radius:9px}
+.ta{color:var(--and);font-weight:700}.ti{color:var(--ios);font-weight:700}
+
+.concl{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.concl .paper{padding:18px 20px;display:flex;gap:14px}
+.concl .cn{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--gold);line-height:1;min-width:26px}
+
+.quiz{padding:24px}
+.qt{font-size:18px;font-weight:600;color:var(--ink);margin-bottom:14px}
+.qo{display:grid;gap:9px}
+.qb{text-align:left;border:1.5px solid var(--line);background:var(--paper);color:var(--text);border-radius:10px;padding:12px 14px;font-size:15px;cursor:pointer}
+.qb:hover:not([disabled]){border-color:var(--accent)}
+.qb.right{border-color:var(--and);background:var(--and-soft)}.qb.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.qf{margin-top:12px;font-size:14.5px;min-height:24px}
+.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:10px;flex-wrap:wrap}
+
+.refs{padding:26px 30px}
+.refs ol{list-style:none}
+.refs li{padding-left:2.2em;text-indent:-2.2em;margin-bottom:10px;font-family:var(--serif);font-size:16px}
+.refs li a{word-break:break-all}
+
+footer{margin-top:60px;background:var(--navy);color:#cbd5e6;font-size:13.5px;padding:28px 0 36px}
+footer .wrap{display:flex;gap:16px;align-items:flex-start}
+footer p+p{margin-top:6px;opacity:.75;font-size:12.5px}
+
+@media (max-width:960px){
+  .player{grid-template-columns:minmax(0,1fr) 210px}
+  .tl{grid-column:1/-1;flex-direction:row;overflow-x:auto}
+  .tl li button span{display:none}
+}
 @media (max-width:820px){
-  .facts{grid-template-columns:1fr}
-  .routes{grid-template-columns:1fr}
-  .route-tabs{flex-direction:row;overflow-x:auto;padding-bottom:4px}
-  .route-tab{min-width:220px}
-  .stats{grid-template-columns:1fr 1fr 1fr}
-  .arrow{display:none}
-  .cmp td:first-child{width:auto}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-art{display:none}
+  .gloss{grid-template-columns:1fr 1fr}
+  .arch,.objs,.concl{grid-template-columns:minmax(0,1fr)}
+  .arch>*,.player>*,.gloss>*{min-width:0}
+  .rtabs{grid-template-columns:1fr}
+  .player{grid-template-columns:minmax(0,1fr);padding:18px}
+  .phonebox{order:-1}
+  .arr{display:none}
+  .inst .right{display:none}
+  .seg button span{display:none}
 }
 @media (max-width:520px){
-  .stats{grid-template-columns:1fr}
-  .cmp th:first-child,.cmp td:first-child{display:none}
+  .gloss{grid-template-columns:1fr}
+  .byline{grid-template-columns:1fr}
+  .phonebox .phone{width:170px}
+  .refs{padding:20px}
+  .abstract{padding:20px}
+  .inst .wrap{font-size:12px}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
+<div class="inst">
+  <div class="wrap">
+    <svg class="emblem" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#fff" fill-opacity=".1"/><rect x="20" y="12" width="24" height="40" rx="5" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M26 32l4 4 8-8" fill="none" stroke="#4ade80" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><b>Fundación Universitaria del Área Andina</b> <span class="sep">|</span> Ingeniería de Sistemas <span class="sep">|</span> Sistemas Operativos II</div>
+    <div class="right">Actividad complementaria · 2026</div>
+  </div>
+</div>
+
 <header class="hero">
   <div class="wrap">
-    <div class="kicker">Infografía interactiva · Sistemas Operativos II</div>
-    <h1>¿Cómo se instala el sistema operativo en un <span class="a">Android</span> y en un <span class="i">iPhone</span>?</h1>
-    <p class="lead">Un celular no se instala como un computador: el sistema viene grabado de fábrica y luego se actualiza o se reinstala por caminos que controla el fabricante. Explora cada plataforma, simula el arranque y recorre paso a paso cada forma de instalación.</p>
-    <div class="meta">
-      <span class="pill">Daniel Hernando Gil Romero</span>
-      <span class="pill">Docente: Jose Gerardo Cuta</span>
-      <span class="pill">Fundación Universitaria del Área Andina · 2026</span>
+    <div>
+      <div class="eyebrow">Infografía interactiva</div>
+      <h1>Instalación del sistema operativo en dispositivos móviles <em>Android</em> e <i>iOS</i></h1>
+      <p class="lead">Cómo llega el sistema operativo a un teléfono inteligente, cómo se actualiza y cómo se reinstala cuando falla. Explore cada plataforma con diagramas, un simulador de arranque y recorridos paso a paso.</p>
+      <div class="byline">
+        <div><span>Autor</span><b>Daniel Hernando Gil Romero</b></div>
+        <div><span>Docente</span><b>Jose Gerardo Cuta</b></div>
+        <div><span>Asignatura</span><b>Sistemas Operativos II</b></div>
+        <div><span>Programa</span><b>Ingeniería de Sistemas</b></div>
+      </div>
     </div>
-    <div class="stats">
-      <div class="stat"><b>3</b><span>formas de instalar en cada plataforma</span></div>
-      <div class="stat"><b>1</b><span>principio común: arranque verificado</span></div>
-      <div class="stat"><b>2</b><span>filosofías: apertura vs. control</span></div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="phone and"><div class="scr" id="hero-a"></div></div>
+      <div class="phone iph"><div class="scr" id="hero-i"></div></div>
     </div>
   </div>
 </header>
 
-<div class="switch-bar wrap">
-  <div class="switch" role="tablist" aria-label="Plataforma">
-    <button class="b-and" role="tab" aria-selected="true" data-os="android">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 10a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2h-1v2.2a1.3 1.3 0 0 1-2.6 0V19h-.8v2.2a1.3 1.3 0 0 1-2.6 0V19H8a2 2 0 0 1-2-2zm-2.2-.5a1.3 1.3 0 0 1 2.6 0v5a1.3 1.3 0 0 1-2.6 0zm13.8 0a1.3 1.3 0 0 1 2.6 0v5a1.3 1.3 0 0 1-2.6 0zM7.1 8A5 5 0 0 1 9.6 4.3l-.9-1.5a.4.4 0 1 1 .7-.4l.9 1.5a5.4 5.4 0 0 1 3.4 0l.9-1.5a.4.4 0 1 1 .7.4l-.9 1.5A5 5 0 0 1 16.9 8zm2.9-2a.7.7 0 1 0 0 1.4A.7.7 0 0 0 10 6m4 0a.7.7 0 1 0 0 1.4.7.7 0 0 0 0-1.4"/></svg>
-      Android</button>
-    <button class="b-ios" role="tab" aria-selected="false" data-os="ios">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10.5 18.5h3"/></svg>
-      iOS (iPhone)</button>
+<nav class="topnav" aria-label="Contenido">
+  <div class="wrap">
+    <div class="toc" id="toc">
+      <a href="#resumen">Resumen</a>
+      <a href="#conceptos">1. Conceptos</a>
+      <a href="#arquitectura">2. Arquitectura</a>
+      <a href="#arranque">3. Arranque</a>
+      <a href="#instalacion">4. Instalación</a>
+      <a href="#comparacion">5. Comparación</a>
+      <a href="#conclusiones">6. Conclusiones</a>
+      <a href="#autoevaluacion">7. Autoevaluación</a>
+      <a href="#referencias">Referencias</a>
+    </div>
+    <div class="seg" role="group" aria-label="Plataforma">
+      <button class="a" data-os="android" aria-pressed="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 10a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2h-1v2.2a1.3 1.3 0 0 1-2.6 0V19h-.8v2.2a1.3 1.3 0 0 1-2.6 0V19H8a2 2 0 0 1-2-2zm-2.2-.5a1.3 1.3 0 0 1 2.6 0v5a1.3 1.3 0 0 1-2.6 0zm13.8 0a1.3 1.3 0 0 1 2.6 0v5a1.3 1.3 0 0 1-2.6 0zM7.1 8A5 5 0 0 1 9.6 4.3l-.9-1.5a.4.4 0 1 1 .7-.4l.9 1.5a5.4 5.4 0 0 1 3.4 0l.9-1.5a.4.4 0 1 1 .7.4l-.9 1.5A5 5 0 0 1 16.9 8zm2.9-2a.7.7 0 1 0 0 1.4A.7.7 0 0 0 10 6m4 0a.7.7 0 1 0 0 1.4.7.7 0 0 0 0-1.4"/></svg><span>Android</span></button>
+      <button class="i" data-os="ios" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10.5 18.5h3"/></svg><span>iOS</span></button>
+    </div>
   </div>
-</div>
+</nav>
 
 <main class="wrap">
 
-  <section id="s1">
-    <div class="sec-head"><span class="num">01</span><h2 id="t-intro"></h2></div>
-    <p class="sub" id="d-intro"></p>
-    <div class="facts" id="facts"></div>
-  </section>
+<section id="resumen">
+  <div class="paper abstract">
+    <h3>Resumen</h3>
+    <p>A diferencia de un computador personal, en un teléfono inteligente el usuario casi nunca instala el sistema operativo desde cero: el equipo sale de fábrica con el sistema grabado en su memoria flash y, a lo largo de su vida útil, se actualiza o se reinstala por rutas controladas por el fabricante. Esta infografía describe cómo ocurre ese proceso en las dos plataformas dominantes. En Android, un proyecto de código abierto que cada fabricante adapta, la instalación consiste en escribir imágenes en particiones verificadas por el cargador de arranque <span class="cite">(Android Open Source Project, s.f.-b)</span>. En iOS, Apple controla el hardware y el software y autoriza cada instalación para un equipo concreto mediante una cadena de arranque seguro <span class="cite">(Apple, s.f.-b)</span>. Se presentan los conceptos básicos, la arquitectura de cada sistema, el arranque verificado, las tres rutas de instalación de cada plataforma y una comparación entre ambas.</p>
+    <p class="kw"><b>Palabras clave:</b> sistema operativo móvil, Android, iOS, bootloader, actualización OTA, arranque verificado, firmware.</p>
+  </div>
+  <div class="objs">
+    <div class="paper"><h4>Objetivo general</h4><p>Explicar de forma visual e interactiva cómo se instalan y actualizan los sistemas operativos en dispositivos móviles Android e iOS.</p></div>
+    <div class="paper"><h4>Objetivos específicos</h4><ol><li>Identificar los componentes que intervienen en la instalación.</li><li>Describir las rutas de instalación de cada plataforma.</li><li>Comparar ambos procesos en apertura, herramientas y seguridad.</li></ol></div>
+  </div>
+</section>
 
-  <section id="s2">
-    <div class="sec-head"><span class="num">02</span><h2 id="t-anat"></h2></div>
-    <p class="sub" id="d-anat"></p>
-    <div class="card anat">
-      <div class="parts" id="parts" role="list"></div>
-      <div class="detail fade" id="part-detail" aria-live="polite"></div>
-      <p class="hint">Toca cada bloque para ver qué guarda.</p>
+<section id="conceptos">
+  <div class="sh"><span class="n">1.</span><h2>Marco conceptual</h2></div>
+  <div class="intro"><p>Un sistema operativo móvil administra el procesador, la memoria, el almacenamiento, la energía y las comunicaciones del equipo <span class="cite">(Silberschatz et al., 2018)</span>. Su instalación depende de los siguientes elementos. Use el selector <b>Android / iOS</b> de la barra superior para cambiar de plataforma en toda la infografía.</p></div>
+  <div class="gloss" id="gloss"></div>
+</section>
+
+<section id="arquitectura">
+  <div class="sh"><span class="n">2.</span><h2 id="arch-title"></h2></div>
+  <div class="intro"><p id="arch-intro"></p></div>
+  <figure>
+    <div class="paper arch">
+      <div><div class="stack" id="stack"></div><div class="hwbar">Hardware: procesador, memoria flash, sensores, radio</div></div>
+      <div class="ldetail fade" id="ldetail" aria-live="polite"></div>
     </div>
-  </section>
+    <figcaption id="fig1cap"></figcaption>
+  </figure>
+  <figure style="margin-top:24px">
+    <div class="paper" style="padding:24px">
+      <h3 style="font-size:18px;margin-bottom:12px" id="parts-title"></h3>
+      <div class="parts" id="parts"></div>
+      <div class="pdetail fade" id="pdetail" aria-live="polite"></div>
+      <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11V5a2 2 0 0 1 4 0v6m0-1a2 2 0 0 1 4 0v3a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2-4a1.5 1.5 0 0 1 2.6-1.5L9 14"/></svg>Toque cada capa o bloque para ver su función.</div>
+    </div>
+    <figcaption id="fig2cap"></figcaption>
+  </figure>
+</section>
 
-  <section id="s3">
-    <div class="sec-head"><span class="num">03</span><h2>Simulador de arranque verificado</h2></div>
-    <p class="sub" id="d-boot"></p>
-    <div class="card anat">
+<section id="arranque">
+  <div class="sh"><span class="n">3.</span><h2>Arranque verificado: la cadena de confianza</h2></div>
+  <div class="intro"><p id="boot-intro"></p></div>
+  <figure>
+    <div class="paper boot">
       <div class="chain" id="chain"></div>
-      <div class="controls">
-        <button class="btn" id="boot-ok">▶ Encender (sistema original)</button>
-        <button class="btn bad" id="boot-bad">⚠ Encender con sistema modificado</button>
-        <button class="btn ghost" id="boot-reset">Reiniciar</button>
+      <div class="ctrl">
+        <button class="btn" id="b-ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg>Encender con sistema original</button>
+        <button class="btn bad" id="b-bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3 2 21h20zM12 10v5M12 18v.5"/></svg>Encender con sistema modificado</button>
+        <button class="btn ghost" id="b-reset">Reiniciar</button>
       </div>
       <div class="log" id="log" aria-live="polite">$ esperando encendido…</div>
     </div>
-  </section>
+    <figcaption id="fig3cap"></figcaption>
+  </figure>
+</section>
 
-  <section id="s4">
-    <div class="sec-head"><span class="num">04</span><h2>Las tres formas de instalar el sistema</h2></div>
-    <p class="sub">Elige una ruta y avanza paso a paso. La dificultad indica el riesgo para los datos y el equipo.</p>
-    <div class="routes">
-      <div class="route-tabs" id="route-tabs" role="tablist" aria-label="Rutas de instalación"></div>
-      <div class="card stepper">
-        <div class="progress"><i id="prog"></i></div>
-        <div id="step" class="fade"></div>
-        <div class="dots" id="dots"></div>
-        <div class="nav">
-          <button class="btn ghost" id="prev">← Anterior</button>
-          <button class="btn" id="next">Siguiente →</button>
-        </div>
+<section id="instalacion">
+  <div class="sh"><span class="n">4.</span><h2>Proceso de instalación: tres rutas</h2></div>
+  <div class="intro"><p>Cada plataforma ofrece tres caminos para instalar o reinstalar el sistema, ordenados de menor a mayor riesgo. Elija una ruta y recorra sus pasos: la pantalla del teléfono muestra lo que se vería en el equipo.</p></div>
+  <figure>
+    <div class="rtabs" id="rtabs" role="tablist" aria-label="Rutas de instalación"></div>
+    <div class="paper player">
+      <ol class="tl" id="tl"></ol>
+      <div class="stepv"><div id="stepv" class="fade"></div>
+        <div class="nav"><button class="btn ghost" id="prev">← Anterior</button><button class="btn" id="next">Siguiente →</button></div>
       </div>
+      <div class="phonebox"><div class="phone" id="sim-phone"><div class="scr" id="sim"></div></div></div>
     </div>
-  </section>
+    <figcaption id="fig4cap"></figcaption>
+  </figure>
+</section>
 
-  <section id="s5">
-    <div class="sec-head"><span class="num">05</span><h2>Android frente a iOS</h2></div>
-    <p class="sub">El objetivo es el mismo —un sistema auténtico y funcional—, pero cada plataforma lo logra con una filosofía distinta.</p>
-    <div class="card cmp">
-      <table>
-        <thead><tr><th>Aspecto</th><th>Android</th><th>iOS</th></tr></thead>
-        <tbody>
-          <tr><td>Quién instala el sistema</td><td>Google y cada fabricante (Samsung, Xiaomi, Motorola…)</td><td>Solo Apple</td></tr>
-          <tr><td>Herramientas</td><td><code>OTA</code> · <code>fastboot</code> · <code>adb</code> · Odin · Recovery</td><td><code>OTA</code> · Finder · iTunes / Dispositivos Apple · Recuperación · DFU</td></tr>
-          <tr><td>Archivo del sistema</td><td>Imagen de fábrica (.img / .zip)</td><td>Archivo IPSW firmado para cada equipo</td></tr>
-          <tr><td>Sistemas alternativos</td><td>Sí, con bootloader desbloqueado (p. ej., LineageOS)</td><td>No; solo versiones firmadas por Apple</td></tr>
-          <tr><td>Volver a una versión anterior</td><td>Posible con imagen oficial (borra los datos)</td><td>Solo mientras Apple siga firmando esa versión</td></tr>
-          <tr><td>Libertad del usuario</td><td><div class="meter"><div class="bar"><i style="width:85%;background:var(--and)"></i></div><span class="tag-a">Alta</span></div></td><td><div class="meter"><div class="bar"><i style="width:30%;background:var(--ios)"></i></div><span class="tag-i">Baja</span></div></td></tr>
-          <tr><td>Control del fabricante</td><td><div class="meter"><div class="bar"><i style="width:45%;background:var(--and)"></i></div><span class="tag-a">Media</span></div></td><td><div class="meter"><div class="bar"><i style="width:95%;background:var(--ios)"></i></div><span class="tag-i">Total</span></div></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+<section id="comparacion">
+  <div class="sh"><span class="n">5.</span><h2>Análisis comparativo</h2></div>
+  <div class="intro"><p>El objetivo de ambas plataformas es el mismo —ejecutar un sistema auténtico y funcional—, pero lo logran con filosofías opuestas: apertura y diversidad de fabricantes en Android, integración vertical y control en iOS.</p></div>
+  <div class="paper cmp">
+    <table>
+      <caption><b>Tabla 1.</b> <i>Comparación de la instalación del sistema operativo en Android e iOS.</i> Fuente: elaboración propia con base en Android Open Source Project (s.f.-a, s.f.-b) y Apple (s.f.-a, s.f.-b).</caption>
+      <thead><tr><th scope="col">Criterio</th><th scope="col">Android</th><th scope="col">iOS</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Quién instala el sistema</th><td>Google y cada fabricante (Samsung, Xiaomi, Motorola…)</td><td>Únicamente Apple</td></tr>
+        <tr><th scope="row">Núcleo</th><td>Linux</td><td>XNU (Darwin: Mach + BSD)</td></tr>
+        <tr><th scope="row">Archivo del sistema</th><td>Imagen de fábrica (.img / .zip)</td><td>Archivo IPSW, firmado para cada equipo</td></tr>
+        <tr><th scope="row">Herramientas</th><td><code>OTA</code> <code>fastboot</code> <code>adb</code> Odin, Recovery</td><td><code>OTA</code> Finder, iTunes / Dispositivos Apple, Recuperación, DFU</td></tr>
+        <tr><th scope="row">Sistemas alternativos</th><td>Sí, con bootloader desbloqueado (p. ej., LineageOS)</td><td>No; solo versiones firmadas por Apple</td></tr>
+        <tr><th scope="row">Volver a una versión anterior</th><td>Posible con imagen oficial (borra los datos)</td><td>Solo mientras Apple siga firmando esa versión</td></tr>
+        <tr><th scope="row">Libertad del usuario</th><td><div class="meter"><div class="bar"><i style="width:85%;background:var(--and)"></i></div><span class="ta">Alta</span></div></td><td><div class="meter"><div class="bar"><i style="width:30%;background:var(--ios)"></i></div><span class="ti">Baja</span></div></td></tr>
+        <tr><th scope="row">Control del fabricante</th><td><div class="meter"><div class="bar"><i style="width:50%;background:var(--and)"></i></div><span class="ta">Media</span></div></td><td><div class="meter"><div class="bar"><i style="width:95%;background:var(--ios)"></i></div><span class="ti">Total</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-  <section id="s6">
-    <div class="sec-head"><span class="num">06</span><h2>Ponte a prueba</h2></div>
-    <p class="sub">Cinco preguntas rápidas para comprobar lo aprendido.</p>
-    <div class="card quiz">
-      <div class="q-text" id="q-text"></div>
-      <div class="q-opts" id="q-opts"></div>
-      <div class="q-fb" id="q-fb" aria-live="polite"></div>
-      <div class="q-foot"><span class="score" id="q-score"></span><button class="btn" id="q-next">Siguiente pregunta →</button></div>
-    </div>
-  </section>
+<section id="conclusiones">
+  <div class="sh"><span class="n">6.</span><h2>Conclusiones</h2></div>
+  <div class="concl">
+    <div class="paper"><span class="cn">i</span><p>La instalación de un sistema operativo móvil difiere de la de un computador: el sistema viene grabado de fábrica y luego se actualiza o se reinstala por rutas que define el fabricante.</p></div>
+    <div class="paper"><span class="cn">ii</span><p>El arranque verificado es el principio común de ambas plataformas: cada etapa comprueba con firmas digitales la siguiente, lo que impide ejecutar sistemas alterados.</p></div>
+    <div class="paper"><span class="cn">iii</span><p>Android, por ser abierto, permite flashear imágenes, volver a versiones anteriores e instalar sistemas alternativos, a cambio de riesgos como la pérdida de datos o un equipo inservible.</p></div>
+    <div class="paper"><span class="cn">iv</span><p>iOS ofrece un proceso más sencillo y uniforme gracias a la integración de hardware y software, pero limita al usuario a las versiones que Apple firma.</p></div>
+  </div>
+</section>
+
+<section id="autoevaluacion">
+  <div class="sh"><span class="n">7.</span><h2>Autoevaluación</h2></div>
+  <div class="intro"><p>Cinco preguntas para comprobar la comprensión de los contenidos.</p></div>
+  <div class="paper quiz">
+    <div class="qt" id="qt"></div>
+    <div class="qo" id="qo"></div>
+    <div class="qf" id="qf" aria-live="polite"></div>
+    <div class="qfoot"><b id="qs"></b><button class="btn" id="qn">Siguiente pregunta →</button></div>
+  </div>
+</section>
+
+<section id="referencias">
+  <div class="sh"><h2>Referencias</h2></div>
+  <div class="paper refs">
+    <ol>
+      <li>Android Developers. (s.f.). <i>Platform architecture</i>. <a href="https://developer.android.com/guide/platform">https://developer.android.com/guide/platform</a></li>
+      <li>Android Open Source Project. (s.f.-a). <i>A/B (seamless) system updates</i>. <a href="https://source.android.com/docs/core/ota/ab">https://source.android.com/docs/core/ota/ab</a></li>
+      <li>Android Open Source Project. (s.f.-b). <i>Bootloader overview</i>. <a href="https://source.android.com/docs/core/architecture/bootloader">https://source.android.com/docs/core/architecture/bootloader</a></li>
+      <li>Android Open Source Project. (s.f.-c). <i>Verified Boot</i>. <a href="https://source.android.com/docs/security/features/verifiedboot">https://source.android.com/docs/security/features/verifiedboot</a></li>
+      <li>Apple. (s.f.-a). <i>Actualizar el iPhone o iPad</i>. Soporte técnico de Apple. <a href="https://support.apple.com/es-es/118575">https://support.apple.com/es-es/118575</a></li>
+      <li>Apple. (s.f.-b). <i>Boot process for iPhone and iPad devices</i>. Apple Platform Security. <a href="https://support.apple.com/guide/security/boot-process-for-iphone-and-ipad-devices-secb3000f149/web">https://support.apple.com/guide/security/boot-process-for-iphone-and-ipad-devices-secb3000f149/web</a></li>
+      <li>Apple. (s.f.-c). <i>Si no puedes actualizar ni restaurar el iPhone o iPod touch</i>. Soporte técnico de Apple. <a href="https://support.apple.com/es-es/118106">https://support.apple.com/es-es/118106</a></li>
+      <li>Google. (s.f.-a). <i>Android Flash Tool</i>. <a href="https://flash.android.com/">https://flash.android.com/</a></li>
+      <li>Google. (s.f.-b). <i>Comprobar y actualizar la versión de Android</i>. Ayuda de Android. <a href="https://support.google.com/android/answer/7680439?hl=es">https://support.google.com/android/answer/7680439?hl=es</a></li>
+      <li>Google. (s.f.-c). <i>Factory images for Nexus and Pixel devices</i>. Google for Developers. <a href="https://developers.google.com/android/images">https://developers.google.com/android/images</a></li>
+      <li>LineageOS Project. (s.f.). <i>LineageOS: Android distribution</i>. <a href="https://lineageos.org/">https://lineageos.org/</a></li>
+      <li>Silberschatz, A., Galvin, P. B., &amp; Gagne, G. (2018). <i>Operating system concepts</i> (10th ed.). Wiley. <a href="https://www.wiley.com/en-us/Operating+System+Concepts%2C+10th+Edition-p-9781119320913">https://www.wiley.com/en-us/Operating+System+Concepts%2C+10th+Edition-p-9781119320913</a></li>
+    </ol>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="wrap">
-    <h4>Fuentes</h4>
-    <ol>
-      <li>Android Open Source Project. (s.f.). <em>A/B (seamless) system updates</em>. <a href="https://source.android.com/docs/core/ota/ab">source.android.com/docs/core/ota/ab</a></li>
-      <li>Android Open Source Project. (s.f.). <em>Bootloader overview</em>. <a href="https://source.android.com/docs/core/architecture/bootloader">source.android.com/docs/core/architecture/bootloader</a></li>
-      <li>Android Open Source Project. (s.f.). <em>Verified Boot</em>. <a href="https://source.android.com/docs/security/features/verifiedboot">source.android.com/docs/security/features/verifiedboot</a></li>
-      <li>Apple. (s.f.). <em>Actualizar el iPhone o iPad</em>. <a href="https://support.apple.com/es-es/118575">support.apple.com/es-es/118575</a></li>
-      <li>Apple. (s.f.). <em>Boot process for iPhone and iPad devices</em>. Apple Platform Security. <a href="https://support.apple.com/guide/security/boot-process-for-iphone-and-ipad-devices-secb3000f149/web">support.apple.com/guide/security</a></li>
-      <li>Apple. (s.f.). <em>Si no puedes actualizar ni restaurar el iPhone o iPod touch</em>. <a href="https://support.apple.com/es-es/118106">support.apple.com/es-es/118106</a></li>
-      <li>Google. (s.f.). <em>Android Flash Tool</em>. <a href="https://flash.android.com/">flash.android.com</a></li>
-      <li>Google. (s.f.). <em>Comprobar y actualizar la versión de Android</em>. <a href="https://support.google.com/android/answer/7680439?hl=es">support.google.com/android/answer/7680439</a></li>
-      <li>LineageOS Project. (s.f.). <em>LineageOS</em>. <a href="https://lineageos.org/">lineageos.org</a></li>
-      <li>Silberschatz, A., Galvin, P. B., &amp; Gagne, G. (2018). <em>Operating system concepts</em> (10th ed.). Wiley.</li>
-    </ol>
-    <div class="credit">Actividad complementaria · Sistemas Operativos II · Programa de Ingeniería de Sistemas · Fundación Universitaria del Área Andina · Elaborado por Daniel Hernando Gil Romero, 2026.</div>
+    <svg class="emblem" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#fff" fill-opacity=".1"/><rect x="20" y="12" width="24" height="40" rx="5" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M26 32l4 4 8-8" fill="none" stroke="#4ade80" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div>
+      <p>Actividad complementaria · Sistemas Operativos II · Programa de Ingeniería de Sistemas · Fundación Universitaria del Área Andina. Elaborado por Daniel Hernando Gil Romero, 2026. Docente: Jose Gerardo Cuta.</p>
+      <p>Diagramas e ilustraciones: elaboración propia. El robot de Android se reproduce a partir de trabajo creado y compartido por Google, usado según los términos de la licencia Creative Commons 3.0 Attribution. Android es una marca de Google LLC; iPhone e iOS son marcas de Apple Inc. Este trabajo académico no está afiliado a ninguna de las dos empresas.</p>
+    </div>
   </div>
 </footer>
 
 <script>
-const ICON={
-  chip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>',
-  layers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg>',
-  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>',
-  file:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>',
-  key:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3"/></svg>'
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ROBOT=c=>`<svg viewBox="0 0 24 24" class="bigic" fill="${c}"><path d="M6 10a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2h-1v2.2a1.3 1.3 0 0 1-2.6 0V19h-.8v2.2a1.3 1.3 0 0 1-2.6 0V19H8a2 2 0 0 1-2-2zm-2.2-.5a1.3 1.3 0 0 1 2.6 0v5a1.3 1.3 0 0 1-2.6 0zm13.8 0a1.3 1.3 0 0 1 2.6 0v5a1.3 1.3 0 0 1-2.6 0zM7.1 8A5 5 0 0 1 9.6 4.3l-.9-1.5a.4.4 0 1 1 .7-.4l.9 1.5a5.4 5.4 0 0 1 3.4 0l.9-1.5a.4.4 0 1 1 .7.4l-.9 1.5A5 5 0 0 1 16.9 8zm2.9-2a.7.7 0 1 0 0 1.4A.7.7 0 0 0 10 6m4 0a.7.7 0 1 0 0 1.4.7.7 0 0 0 0-1.4"/></svg>`;
+const I={
+ chip:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>',
+ boot:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/></svg>',
+ layers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg>',
+ file:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>',
+ wifi:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg>',
+ shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>',
+ lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
+ cpu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>',
+ phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10.5 18.5h3"/></svg>',
+ warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 2 21h20zM12 10v5M12 18v.5"/></svg>'
 };
+const big=s=>s.replace('<svg','<svg class="bigic"');
+const LAPTOP='<svg viewBox="0 0 64 64" class="bigic" fill="none" stroke="currentColor" stroke-width="3"><rect x="12" y="14" width="40" height="26" rx="3"/><path d="M6 46h52l-4 5H10z"/></svg>';
+const CABLE='<svg viewBox="0 0 64 30" style="width:60px" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 15h20M40 15h20"/><rect x="24" y="8" width="16" height="14" rx="3"/></svg>';
+const sb=()=>`<div class="sb"><span>9:41</span><span>▮▮▮ 80%</span></div>`;
+
+const SCREENS={
+ 'a-home':()=>`${sb()}<div class="sc center" style="background:linear-gradient(160deg,#e7f6ec,#fff)">${ROBOT('#1a8f4a')}<h5>Android</h5><div class="t">Sistema abierto · AOSP</div></div>`,
+ 'i-home':()=>`${sb()}<div class="sc center" style="background:linear-gradient(160deg,#e8eefc,#fff)"><svg viewBox="0 0 24 24" class="bigic" fill="none" stroke="#2459d6" stroke-width="1.6"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10.5 18.5h3"/></svg><h5>iOS</h5><div class="t">Sistema cerrado · firmado</div></div>`,
+ 'a-backup':()=>`${sb()}<div class="sc"><h5>Copia de seguridad</h5><div class="row"><span>Copia automática</span><span class="tg on"></span></div><div class="row"><span>Batería</span><b>80 %</b></div><div class="row"><span>Wi-Fi</span><b>Conectado</b></div><div class="t" style="margin-top:6px">Última copia: hoy, 9:30</div><div class="btnp" style="--sbtn:#1a8f4a">Hacer copia ahora</div></div>`,
+ 'a-update':()=>`${sb()}<div class="sc"><div class="t">Sistema › Actualización de software</div><h5>Actualización disponible</h5><div class="t">Nueva versión de Android · 1,9 GB<br>Mejoras de seguridad y rendimiento.</div><div class="btnp" style="--sbtn:#1a8f4a">Descargar e instalar</div></div>`,
+ 'a-ab':()=>`${sb()}<div class="sc"><h5>Instalando…</h5><div class="t">Puede seguir usando el teléfono.</div><div class="row"><span>Ranura A (activa)</span><b>v14</b></div><div class="row"><span>Ranura B</span><b style="color:#1a8f4a">v15 ↓</b></div><div class="pbar"><i></i></div><div class="cap">Escribiendo en la ranura inactiva</div></div>`,
+ 'a-reboot':()=>`${sb()}<div class="sc center">${ROBOT('#1a8f4a')}<h5>Reiniciando</h5><div class="t">Arrancando desde la ranura B.<br>Si falla, vuelve a la A.</div></div>`,
+ 'a-dev':()=>`${sb()}<div class="sc"><h5>Opciones de desarrollador</h5><div class="row"><span>Depuración USB</span><span class="tg on"></span></div><div class="row"><span>Desbloqueo OEM</span><span class="tg on"></span></div><div class="row"><span>Pantalla activa</span><span class="tg"></span></div><div class="t" style="margin-top:6px">Se habilitan tocando 7 veces «Número de compilación».</div></div>`,
+ 'a-fastboot':()=>`<div class="sc center">${ROBOT('#3ddc84')}<div class="term-s"><span class="r">FASTBOOT MODE</span><br>PRODUCT_NAME - device<br>BOOTLOADER - <span class="r">locked</span><br>SECURE BOOT - <span class="g">yes</span><br><br><span class="g">&gt; Start</span></div></div>`,
+ 'a-flash':()=>`<div class="sc" style="justify-content:center"><div class="term-s">$ fastboot flashing unlock<br><span class="y">OKAY</span><br>$ ./flash-all.sh<br>Sending 'boot_b'… <span class="g">OKAY</span><br>Writing 'system_b'…<br>Writing 'vendor_b'…</div><div class="pbar" style="--sbar:#3ddc84;background:#222"><i></i></div><div class="cap">Escribiendo la imagen de fábrica</div></div>`,
+ 'a-locked':()=>`${sb()}<div class="sc center"><div style="color:#1a8f4a">${big(I.lock)}</div><h5>Bootloader bloqueado</h5><div class="t">Arranque verificado activo.<br>Solo acepta imágenes oficiales.</div></div>`,
+ 'a-recovery':()=>`<div class="sc" style="justify-content:center"><div class="term-s" style="color:#9aa0aa">Android Recovery</div><div class="menu-s"><div>Reboot system now</div><div>Reboot to bootloader</div><div class="sel">Apply update from ADB</div><div>Wipe data/factory reset</div><div>Power off</div></div><div class="cap">Vol ↑↓ mover · Encendido elegir</div></div>`,
+ 'a-sideload':()=>`<div class="sc" style="justify-content:center"><div class="term-s">Now send the package you want to apply to the device with "adb sideload &lt;filename&gt;"…<br><br><span class="g">Verifying update package…</span><br>Installing update…</div><div class="pbar" style="--sbar:#3ddc84;background:#222"><i></i></div></div>`,
+ 'a-rom':()=>`${sb()}<div class="sc center" style="background:linear-gradient(160deg,#eef0ff,#fff)"><svg viewBox="0 0 24 24" class="bigic" fill="none" stroke="#5b5bd6" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg><h5>ROM alternativa</h5><div class="t">Ej.: LineageOS<br>Recovery personalizado (TWRP)</div></div>`,
+ 'i-backup':()=>`${sb()}<div class="sc"><h5>Copia en iCloud</h5><div class="row"><span>Copia de iCloud</span><span class="tg on"></span></div><div class="row"><span>Batería</span><b>Cargando</b></div><div class="row"><span>Wi-Fi</span><b>Conectado</b></div><div class="btnp" style="--sbtn:#2459d6">Realizar copia ahora</div></div>`,
+ 'i-update':()=>`${sb()}<div class="sc"><div class="t">General › Actualización de software</div><h5>Nueva versión de iOS</h5><div class="t">Incluye mejoras y correcciones de seguridad.</div><div class="btnp" style="--sbtn:#2459d6">Actualizar ahora</div></div>`,
+ 'i-sign':()=>`${sb()}<div class="sc center"><div style="color:#2459d6">${big(I.shield)}</div><h5>Verificando actualización…</h5><div class="t">Apple autoriza esta versión para el ECID de este equipo.</div><div class="pbar" style="--sbar:#2459d6"><i></i></div></div>`,
+ 'i-done':()=>`${sb()}<div class="sc center" style="background:linear-gradient(160deg,#e8eefc,#fff)"><h5 style="font-size:24px;font-family:var(--serif)">Hola</h5><div class="t">Actualización completa.<br>Los datos se conservaron.</div></div>`,
+ 'i-trust':()=>`${sb()}<div class="sc center" style="background:#f2f2f7"><div style="background:#fff;border-radius:12px;padding:12px 10px;box-shadow:0 2px 10px rgba(0,0,0,.1)"><h5>¿Confiar en este computador?</h5><div class="t" style="margin:6px 0">Sus ajustes y datos serán accesibles desde él.</div><div style="display:flex;border-top:1px solid #ddd;padding-top:7px;gap:8px;justify-content:space-around;color:#2459d6;font-weight:600"><span>Confiar</span><span style="font-weight:400">No confiar</span></div></div></div>`,
+ 'i-choose':()=>`<div class="sc center" style="background:#f2f2f7;color:#2459d6">${LAPTOP}<h5 style="color:#14213d">Finder / iTunes</h5><div style="display:flex;gap:6px"><span class="btnp" style="--sbtn:#2459d6;padding:5px 10px">Actualizar</span><span class="btnp" style="--sbtn:#c62828;padding:5px 10px">Restaurar</span></div><div class="t">Actualizar conserva datos · Restaurar borra</div></div>`,
+ 'i-ipsw':()=>`<div class="sc center" style="background:#000;color:#fff"><div style="width:42px;height:42px;border-radius:50%;border:3px solid #fff"></div><div class="pbar" style="--sbar:#fff;background:#333;width:70%;align-self:center"><i></i></div><div class="cap">Instalando el IPSW…</div></div>`,
+ 'i-activation':()=>`${sb()}<div class="sc"><h5>Bloqueo de activación</h5><div class="t">Este iPhone está vinculado a un Apple ID. Ingrese la contraseña usada para configurarlo.</div><div class="row"><span>Apple ID</span><span class="t">usuario@…</span></div><div class="row"><span>Contraseña</span><span class="t">••••••</span></div><div class="btnp" style="--sbtn:#2459d6">Siguiente</div></div>`,
+ 'i-buttons':()=>`<div class="sc center" style="background:#111;color:#fff"><div class="term-s" style="text-align:center;font-size:10px;line-height:2">1 · Volumen <b class="g">+</b> (soltar)<br>2 · Volumen <b class="g">−</b> (soltar)<br>3 · Mantener <b class="y">botón lateral</b></div><div class="cap">iPhone 8 o posterior</div></div>`,
+ 'i-recovery':()=>`<div class="sc center" style="background:#fff;color:#2459d6">${CABLE}${LAPTOP}<div class="t">Pantalla de modo de recuperación: conectar al computador.</div></div>`,
+ 'i-dfu':()=>`<div class="sc center" style="background:#000"><div class="cap" style="color:#555">(pantalla completamente negra)</div><div class="cap" style="color:#555">DFU: no se carga iBoot</div></div>`
+};
+const DARK=['a-fastboot','a-flash','a-recovery','a-sideload','i-ipsw','i-buttons','i-dfu'];
+function screen(el,key){el.innerHTML=SCREENS[key](); el.classList.toggle('dark',DARK.includes(key))}
+
 const DATA={
  android:{
-  intro:'Android: un sistema abierto',
-  introD:'Google publica el código base (AOSP) y cada fabricante lo adapta con sus controladores y su capa de personalización antes de instalarlo de fábrica.',
-  facts:[
-   ['chip','Base Linux','Kernel Linux + capa de Android + capa del fabricante (One UI, HyperOS, etc.).'],
-   ['layers','Memoria por particiones','El sistema, el arranque, la recuperación y los datos viven en particiones separadas de la memoria flash.'],
-   ['shield','Android Verified Boot','El bootloader comprueba la firma de cada partición antes de iniciar el sistema.']],
-  anat:'Anatomía de la memoria interna',
-  anatD:'Así se divide el almacenamiento de un celular Android. Instalar el sistema consiste en escribir imágenes en estas particiones.',
+  gloss:[
+   ['boot','Bootloader','Primer programa que se ejecuta al encender. Verifica las firmas y carga el sistema; puede estar bloqueado o desbloqueado (Android Open Source Project, s.f.-b).'],
+   ['layers','Particiones','Divisiones de la memoria flash: boot, system, vendor, recovery y userdata. Instalar el sistema es escribir imágenes en ellas.'],
+   ['file','Imagen de fábrica','Archivo con el sistema completo de un modelo, publicado por el fabricante para reinstalarlo (Google, s.f.-c).'],
+   ['wifi','Actualización OTA','<i>Over the air</i>: el equipo descarga e instala el sistema por Wi-Fi, sin computador (Google, s.f.-b).'],
+   ['shield','Arranque verificado','Android Verified Boot comprueba que ninguna partición fue alterada antes de iniciarla (Android Open Source Project, s.f.-c).'],
+   ['chip','Flasheo','Escritura directa de imágenes en las particiones desde un computador, con herramientas como <code>fastboot</code>.']],
+  archT:'Arquitectura de Android',
+  archI:'Android se organiza en capas sobre el núcleo Linux. Google mantiene el código base (AOSP) y cada fabricante agrega sus controladores y su capa de personalización antes de instalarlo en el equipo (Android Developers, s.f.).',
+  layers:[
+   ['Aplicaciones','sistema y usuario','#0f5e2c','Aplicaciones del sistema (teléfono, ajustes, cámara) y las que instala el usuario desde la tienda.',['Se actualizan por separado del sistema.','Residen en las particiones system y userdata.']],
+   ['Framework de Java API','servicios del sistema','#157a3c','Servicios que usan las aplicaciones: actividades, notificaciones, paquetes y ventanas.',['Forma parte de la imagen de system.']],
+   ['Bibliotecas nativas + ART','C/C++ · Android Runtime','#1a8f4a','Bibliotecas en C/C++ (gráficos, multimedia, SQLite) y el entorno de ejecución ART, que ejecuta el código de las aplicaciones.',['ART compila el código de las apps al instalarlas.']],
+   ['HAL','abstracción de hardware','#2fa65a','Interfaces estándar que permiten al sistema usar cámara, audio o sensores sin conocer el hardware concreto.',['La aporta cada fabricante en la partición vendor.']],
+   ['Kernel Linux','núcleo','#4fae73','Administra procesos, memoria, energía, seguridad y controladores. Es lo primero que carga el bootloader.',['Se guarda en la partición boot.','Su firma se verifica en cada arranque.']]],
+  partsT:'Particiones de la memoria interna',
   parts:[
-   ['bootloader','arranque inicial','#0f5e2c','<b>Bootloader:</b> primer programa que se ejecuta. Verifica las firmas y decide qué arrancar: el sistema normal, el modo Recovery o el modo Fastboot. Puede estar <b>bloqueado</b> (solo acepta imágenes oficiales) o <b>desbloqueado</b>.'],
-   ['boot','kernel + ramdisk','#15803d','<b>boot:</b> contiene el núcleo Linux y el disco inicial en RAM que prepara el resto del sistema.'],
-   ['system','Android','#16a34a','<b>system:</b> el sistema Android con sus servicios, el entorno de ejecución y las apps del sistema. En equipos A/B existen dos copias: <code>system_a</code> y <code>system_b</code>.'],
-   ['vendor','fabricante','#22c55e','<b>vendor:</b> controladores y componentes propios del fabricante del chip y del equipo.'],
-   ['recovery','reparación','#4ade80','<b>recovery:</b> mini sistema para restablecer de fábrica o instalar actualizaciones (<code>adb sideload</code>). En equipos recientes vive dentro de <i>boot</i>.'],
-   ['userdata','tus datos','#86efac','<b>userdata:</b> apps instaladas, fotos y configuraciones. Es lo que se borra al restablecer de fábrica o al desbloquear el bootloader.']],
-  bootD:'Al encender, cada etapa verifica la firma digital de la siguiente. Si una firma no coincide, el equipo avisa o se niega a arrancar.',
-  chain:[['ROM del chip','raíz de confianza'],['Bootloader','verifica vbmeta'],['boot (kernel)','firmado'],['system / vendor','dm-verity'],['Android','listo']],
-  failMsg:['[AVB] firma de boot NO coincide con la clave del fabricante','[AVB] estado: RED — el equipo no arranca','→ entrar a Fastboot/Recovery y reinstalar la imagen oficial'],
+   ['bootloader','arranque inicial','#0f5e2c','<b>Bootloader:</b> decide qué arrancar (sistema, Recovery o Fastboot) y verifica las firmas. Bloqueado: solo acepta imágenes oficiales; desbloqueado: acepta cualquier imagen.'],
+   ['boot','kernel + ramdisk','#157a3c','<b>boot:</b> núcleo Linux y disco inicial en RAM que prepara el resto del sistema.'],
+   ['system','Android','#1a8f4a','<b>system:</b> el sistema Android y sus servicios. En equipos A/B existen dos copias (<code>system_a</code> y <code>system_b</code>).'],
+   ['vendor','fabricante','#2fa65a','<b>vendor:</b> controladores y componentes del fabricante del chip y del equipo.'],
+   ['recovery','reparación','#4fae73','<b>recovery:</b> mini sistema para restablecer de fábrica o instalar paquetes con <code>adb sideload</code>.'],
+   ['userdata','datos','#8fd3a8','<b>userdata:</b> aplicaciones instaladas, fotos y ajustes. Se borra al restablecer o al desbloquear el bootloader.']],
+  bootI:'Al encender, cada etapa verifica la firma digital de la siguiente con claves del fabricante. Si una firma no coincide, el equipo muestra una advertencia o se niega a arrancar (Android Open Source Project, s.f.-c). Pruebe el simulador con un sistema original y con uno modificado.',
+  chain:[['cpu','ROM del chip','raíz de confianza'],['boot','Bootloader','verifica vbmeta'],['file','boot (kernel)','firmado'],['layers','system / vendor','dm-verity'],['phone','Android','sistema listo']],
+  fail:['[AVB] la firma de boot NO coincide con la clave del fabricante','[AVB] estado RED: el equipo no arranca','→ entrar a Fastboot o Recovery y reinstalar la imagen oficial'],
+  src:{f1:'Android Developers (s.f.)',f2:'Android Open Source Project (s.f.-a, s.f.-b)',f3:'Android Open Source Project (s.f.-c)',f4:'Google (s.f.-a, s.f.-b, s.f.-c) y LineageOS Project (s.f.)'},
   routes:[
-   {k:'RUTA 1',t:'Actualización por el aire (OTA)',d:'La forma normal: desde el celular.',lvl:['easy','Riesgo bajo · conserva datos'],tools:['Ajustes','Wi-Fi','Particiones A/B'],steps:[
-     ['Prepara el equipo','<p>Haz una copia de seguridad, carga la batería por encima del 50 % y conéctate a una red Wi-Fi.</p>'],
-     ['Busca la actualización','<p>Entra a <b>Ajustes › Sistema › Actualización de software</b> (el nombre cambia según el fabricante) y toca <b>Descargar e instalar</b>.</p>'],
-     ['Instalación en segundo plano','<p>En equipos con particiones A/B, la versión nueva se escribe en la ranura <b>inactiva</b> mientras sigues usando el celular.</p><div class="term">slot activo:   _a  (Android 14)\nslot inactivo: _b  ← escribiendo Android 15…</div>'],
-     ['Reinicia','<p>Al reiniciar, el bootloader cambia a la otra ranura. Si el nuevo sistema no arranca, vuelve automáticamente a la versión anterior.</p>']]},
-   {k:'RUTA 2',t:'Flasheo desde el computador',d:'Reinstalar la imagen oficial de fábrica.',lvl:['mid','Riesgo medio · borra datos'],tools:['fastboot','Android Flash Tool','Odin (Samsung)','Mi Flash (Xiaomi)'],steps:[
-     ['Habilita las opciones','<p>En <b>Ajustes › Acerca del teléfono</b> toca 7 veces «Número de compilación». Luego, en Opciones de desarrollador, activa <b>Depuración USB</b> y <b>Desbloqueo OEM</b>.</p>'],
-     ['Entra al modo Fastboot','<p>Conecta el equipo por USB y reinícialo en modo bootloader.</p><div class="term">adb reboot bootloader</div>'],
-     ['Desbloquea y flashea','<p>Desbloquea el bootloader (borra todo) y escribe la imagen de fábrica. En los Pixel también se puede hacer desde el navegador con Android Flash Tool.</p><div class="term">fastboot flashing unlock\n./flash-all.sh        # imagen oficial del modelo</div>'],
-     ['Vuelve a bloquear','<p>Bloquea de nuevo el bootloader para recuperar el arranque verificado y configura el equipo con tu cuenta de Google.</p><div class="term">fastboot flashing lock</div>']],
-    warn:'Desbloquear el bootloader <b>borra todos los datos</b>, puede anular la garantía y desactiva el arranque verificado. Usa siempre la imagen del modelo exacto.'},
-   {k:'RUTA 3',t:'Recovery y ROM personalizada',d:'Reparar el equipo o instalar otro Android.',lvl:['hard','Riesgo alto · usuarios avanzados'],tools:['Recovery','adb sideload','TWRP','LineageOS'],steps:[
-     ['Entra al Recovery','<p>Con el equipo apagado, mantén <b>Encendido + Volumen</b> (la combinación cambia según la marca) y elige «Recovery mode».</p>'],
-     ['Repara o actualiza','<p>Desde el menú puedes <b>restablecer de fábrica</b> o instalar un paquete oficial desde el computador.</p><div class="term">adb sideload ota-oficial.zip</div>'],
-     ['Instala una ROM alternativa (opcional)','<p>Con el bootloader desbloqueado se puede instalar un recovery personalizado y un sistema alternativo como <b>LineageOS</b>, que extiende la vida de equipos sin soporte.</p>']],
-    warn:'Una imagen equivocada puede dejar el equipo inservible («brick»). Algunas apps bancarias no funcionan con sistemas modificados.'}]
+   {k:'RUTA 1',t:'Actualización OTA',d:'Desde el propio teléfono.',lvl:['easy','Riesgo bajo · conserva datos'],tools:['Ajustes','Wi-Fi','Particiones A/B'],steps:[
+     ['Preparar el equipo','a-backup','<p>Haga una copia de seguridad, cargue la batería por encima del 50 % y conéctese a una red Wi-Fi.</p>'],
+     ['Buscar la actualización','a-update','<p>Entre a <b>Ajustes › Sistema › Actualización de software</b> (el nombre varía según el fabricante) y toque <b>Descargar e instalar</b> (Google, s.f.-b).</p>'],
+     ['Instalación en segundo plano','a-ab','<p>En equipos con particiones A/B, la versión nueva se escribe en la ranura <b>inactiva</b> mientras se sigue usando el teléfono (Android Open Source Project, s.f.-a).</p><div class="term">ranura activa:   _a  (Android 14)\nranura inactiva: _b  ← escribiendo Android 15…</div>'],
+     ['Reiniciar','a-reboot','<p>Al reiniciar, el bootloader cambia de ranura. Si el nuevo sistema no arranca, vuelve automáticamente a la versión anterior.</p>']]},
+   {k:'RUTA 2',t:'Flasheo desde el computador',d:'Reinstalar la imagen oficial.',lvl:['mid','Riesgo medio · borra datos'],tools:['fastboot','Android Flash Tool','Odin (Samsung)','Mi Flash (Xiaomi)'],steps:[
+     ['Habilitar opciones','a-dev','<p>En <b>Ajustes › Acerca del teléfono</b> toque 7 veces «Número de compilación». En Opciones de desarrollador active <b>Depuración USB</b> y <b>Desbloqueo OEM</b>.</p>'],
+     ['Entrar al modo Fastboot','a-fastboot','<p>Conecte el equipo por USB y reinícielo en modo bootloader.</p><div class="term">adb reboot bootloader</div>'],
+     ['Desbloquear y flashear','a-flash','<p>Desbloquee el bootloader (borra todo) y escriba la imagen de fábrica del modelo (Google, s.f.-c). En los Pixel también puede hacerse desde el navegador con Android Flash Tool (Google, s.f.-a).</p><div class="term">fastboot flashing unlock\n./flash-all.sh</div>'],
+     ['Volver a bloquear','a-locked','<p>Bloquee de nuevo el bootloader para recuperar el arranque verificado y configure el equipo con su cuenta de Google.</p><div class="term">fastboot flashing lock</div>']],
+    warn:'Desbloquear el bootloader <b>borra todos los datos</b>, puede anular la garantía y desactiva el arranque verificado. Use siempre la imagen del modelo exacto.'},
+   {k:'RUTA 3',t:'Recovery y ROM alternativa',d:'Reparar o cambiar el sistema.',lvl:['hard','Riesgo alto · usuarios avanzados'],tools:['Recovery','adb sideload','TWRP','LineageOS'],steps:[
+     ['Entrar al Recovery','a-recovery','<p>Con el equipo apagado, mantenga <b>Encendido + Volumen</b> (la combinación cambia según la marca) y elija «Recovery mode».</p>'],
+     ['Reparar o actualizar','a-sideload','<p>Desde el menú se puede <b>restablecer de fábrica</b> o instalar un paquete oficial enviado desde el computador.</p><div class="term">adb sideload ota-oficial.zip</div>'],
+     ['Instalar una ROM alternativa','a-rom','<p>Con el bootloader desbloqueado se puede instalar un recovery personalizado y un sistema alternativo como <b>LineageOS</b>, que prolonga la vida de equipos sin soporte (LineageOS Project, s.f.).</p>']],
+    warn:'Una imagen equivocada puede dejar el equipo inservible («brick»). Algunas aplicaciones bancarias no funcionan con sistemas modificados.'}]
  },
  ios:{
-  intro:'iOS: un sistema cerrado',
-  introD:'Apple diseña el chip, el hardware y el software, e instala en el iPhone solo versiones que sus servidores firman para ese equipo en particular.',
-  facts:[
-   ['chip','Base Darwin','Núcleo XNU (Mach + BSD), el mismo origen de macOS.'],
-   ['key','Firmado por Apple','Cada instalación se autoriza para el equipo exacto (ECID). Si Apple deja de firmar una versión, ya no se puede instalar.'],
-   ['file','Archivo IPSW','Paquete con el firmware y el sistema completo que el computador instala en el iPhone.']],
-  anat:'Anatomía del paquete IPSW',
-  anatD:'Al instalar desde el computador, el IPSW se descomprime y cada componente se verifica antes de escribirse en el iPhone.',
+  gloss:[
+   ['cpu','Boot ROM','Código grabado en el procesador durante la fabricación; contiene la clave pública de Apple y es la raíz de confianza (Apple, s.f.-b).'],
+   ['boot','iBoot','Cargador de arranque de Apple. Verifica la firma del núcleo antes de cargarlo.'],
+   ['file','Archivo IPSW','Paquete con el firmware y el sistema completo que el computador instala en el iPhone.'],
+   ['wifi','Actualización OTA','Descarga e instalación desde Ajustes, por Wi-Fi, conservando los datos (Apple, s.f.-a).'],
+   ['shield','Firma por equipo','Los servidores de Apple autorizan cada instalación para el identificador único (ECID) del equipo.'],
+   ['phone','Recuperación y DFU','Modos especiales para reinstalar el sistema cuando el iPhone no inicia (Apple, s.f.-c).']],
+  archT:'Arquitectura de iOS',
+  archI:'iOS comparte su base con macOS: el núcleo XNU, que combina el micronúcleo Mach con componentes BSD, forma el sistema Darwin. Sobre él se organizan las capas de servicios y de interfaz (Silberschatz et al., 2018).',
+  layers:[
+   ['Cocoa Touch','interfaz y aplicaciones','#1a3a8a','Marcos de trabajo para la interfaz táctil, las notificaciones y los servicios que usan las aplicaciones.',['Incluye UIKit y SwiftUI.']],
+   ['Media','gráficos, audio y video','#1f4bb0','Servicios de gráficos, animación, audio y video.',['Aprovechan la GPU integrada en el chip.']],
+   ['Core Services','servicios básicos','#2459d6','Servicios fundamentales: archivos, red, bases de datos, iCloud y localización.',['Base común con macOS.']],
+   ['Core OS (Darwin / XNU)','núcleo','#4a7ae6','Núcleo XNU (Mach + BSD): procesos, memoria, seguridad y controladores. Es lo que carga y verifica iBoot.',['El volumen del sistema está sellado criptográficamente.']]],
+  partsT:'Componentes que se verifican en la instalación',
   parts:[
-   ['Boot ROM','en el chip','#1e3a8a','<b>Boot ROM:</b> código grabado en el procesador durante la fabricación. No se puede modificar y contiene la clave pública de Apple: es la <b>raíz de confianza</b>.'],
-   ['iBoot','cargador','#1d4ed8','<b>iBoot:</b> cargador de arranque. Verifica la firma del kernel antes de cargarlo. El modo DFU se salta esta etapa para reinstalar todo.'],
-   ['Kernel XNU','núcleo','#2563eb','<b>Kernel XNU:</b> administra memoria, procesos y hardware. Su firma la comprueba iBoot.'],
-   ['Sistema iOS','volumen sellado','#3b82f6','<b>Sistema:</b> volumen de solo lectura y sellado criptográficamente; cualquier cambio rompe el sello.'],
-   ['Datos','tus datos','#93c5fd','<b>Datos del usuario:</b> apps, fotos y ajustes, cifrados con claves ligadas al equipo. «Actualizar» los conserva; «Restaurar» los borra.']],
-  bootD:'La cadena de confianza de Apple empieza en la Boot ROM. Si cualquier etapa no tiene una firma válida de Apple, el iPhone se detiene y pide conectarse al computador.',
-  chain:[['Boot ROM','grabada en el chip'],['iBoot','verifica la firma'],['Kernel XNU','firmado por Apple'],['iOS','volumen sellado']],
-  failMsg:['[iBoot] firma del kernel inválida','[iBoot] arranque detenido','→ el iPhone muestra la pantalla de recuperación (cable + computador)'],
+   ['Boot ROM','en el chip','#1a3a8a','<b>Boot ROM:</b> código inmutable en el procesador. Si la siguiente etapa falla, el equipo entra en modo DFU.'],
+   ['iBoot','cargador','#1f4bb0','<b>iBoot:</b> cargador de arranque firmado por Apple; verifica el kernel. El modo DFU se salta esta etapa.'],
+   ['Kernel','XNU','#2459d6','<b>Kernel XNU:</b> administra memoria, procesos y hardware. Su firma la comprueba iBoot.'],
+   ['Sistema','volumen sellado','#4a7ae6','<b>Volumen del sistema:</b> de solo lectura y sellado; cualquier cambio rompe el sello y el equipo no arranca.'],
+   ['Datos','usuario','#9db7f0','<b>Datos del usuario:</b> aplicaciones, fotos y ajustes cifrados. «Actualizar» los conserva; «Restaurar» los borra.']],
+  bootI:'La cadena de confianza de Apple empieza en la Boot ROM. Si cualquier etapa carece de una firma válida, el iPhone se detiene y pide conectarse a un computador (Apple, s.f.-b). Pruebe el simulador con un sistema original y con uno modificado.',
+  chain:[['cpu','Boot ROM','grabada en el chip'],['boot','iBoot','verifica la firma'],['file','Kernel XNU','firmado por Apple'],['phone','iOS','volumen sellado']],
+  fail:['[iBoot] firma del kernel inválida','[iBoot] arranque detenido','→ el iPhone muestra la pantalla de recuperación (cable + computador)'],
+  src:{f1:'Silberschatz et al. (2018)',f2:'Apple (s.f.-b)',f3:'Apple (s.f.-b)',f4:'Apple (s.f.-a, s.f.-c)'},
   routes:[
-   {k:'RUTA 1',t:'Actualización por el aire (OTA)',d:'Desde Ajustes del iPhone.',lvl:['easy','Riesgo bajo · conserva datos'],tools:['Ajustes','Wi-Fi','iCloud'],steps:[
-     ['Prepara el equipo','<p>Haz una copia en iCloud o en el computador, conéctate a Wi-Fi y al cargador.</p>'],
-     ['Busca la actualización','<p>Entra a <b>Ajustes › General › Actualización de software</b> y toca <b>Actualizar ahora</b>.</p>'],
-     ['Apple firma la instalación','<p>El iPhone envía su identificador (ECID) a los servidores de Apple, que autorizan esa versión solo para ese equipo.</p><div class="term">ECID 0x1A2B…  →  servidor de firmas\nrespuesta: versión 18.x AUTORIZADA ✓</div>'],
-     ['Reinicio automático','<p>El equipo instala, reinicia y arranca con la nueva versión. Los datos se conservan.</p>']]},
+   {k:'RUTA 1',t:'Actualización OTA',d:'Desde Ajustes del iPhone.',lvl:['easy','Riesgo bajo · conserva datos'],tools:['Ajustes','Wi-Fi','iCloud'],steps:[
+     ['Preparar el equipo','i-backup','<p>Haga una copia en iCloud o en el computador y conecte el equipo a Wi-Fi y al cargador (Apple, s.f.-a).</p>'],
+     ['Buscar la actualización','i-update','<p>Entre a <b>Ajustes › General › Actualización de software</b> y toque <b>Actualizar ahora</b>.</p>'],
+     ['Autorización de Apple','i-sign','<p>El iPhone envía su identificador (ECID) a los servidores de Apple, que autorizan esa versión solo para ese equipo.</p><div class="term">ECID 0x1A2B…  →  servidor de firmas\nrespuesta: versión AUTORIZADA ✓</div>'],
+     ['Reinicio automático','i-done','<p>El equipo instala, reinicia y arranca con la nueva versión. Los datos se conservan.</p>']]},
    {k:'RUTA 2',t:'Desde el computador',d:'Finder (Mac) o iTunes / Dispositivos Apple (Windows).',lvl:['mid','Restaurar borra datos'],tools:['Finder','iTunes','Dispositivos Apple','IPSW'],steps:[
-     ['Conecta el iPhone','<p>Usa un cable y toca <b>Confiar</b> en el iPhone cuando lo pida.</p>'],
-     ['Elige la acción','<p><b>Actualizar:</b> instala la versión nueva y conserva los datos.<br><b>Restaurar:</b> borra todo e instala el sistema limpio.</p>'],
-     ['Descarga e instalación','<p>El computador descarga el IPSW, lo verifica con Apple y lo instala en el equipo.</p>'],
-     ['Configura','<p>Restaura tu copia de seguridad. Si «Buscar mi iPhone» estaba activo, el <b>Bloqueo de activación</b> pedirá tu Apple ID.</p>']]},
-   {k:'RUTA 3',t:'Modo recuperación y DFU',d:'Cuando el iPhone no enciende o queda en el logo.',lvl:['hard','Último recurso · borra datos'],tools:['Modo recuperación','Modo DFU','Finder / iTunes'],steps:[
-     ['Conecta y fuerza el modo','<p>Conecta el iPhone al computador. En el iPhone 8 o posterior: presiona y suelta <b>Volumen +</b>, luego <b>Volumen −</b> y mantén el <b>botón lateral</b> hasta ver la pantalla de recuperación.</p>'],
-     ['Recuperación o DFU','<p><b>Recuperación:</b> la pantalla muestra un cable y un computador; usa iBoot.<br><b>DFU:</b> pantalla completamente negra; no carga iBoot y permite reinstalar todo el firmware.</p>'],
-     ['Reinstalación','<p>Finder o iTunes detectan el equipo y ofrecen <b>Actualizar</b> o <b>Restaurar</b>. Si el problema persiste, se restaura desde cero.</p>']],
+     ['Conectar el iPhone','i-trust','<p>Conecte el equipo con un cable y toque <b>Confiar</b> cuando lo solicite.</p>'],
+     ['Elegir la acción','i-choose','<p><b>Actualizar:</b> instala la nueva versión y conserva los datos.<br><b>Restaurar:</b> borra todo e instala el sistema limpio (Apple, s.f.-a).</p>'],
+     ['Instalación del IPSW','i-ipsw','<p>El computador descarga el IPSW, lo valida con Apple y lo instala en el equipo.</p>'],
+     ['Configurar','i-activation','<p>Restaure su copia de seguridad. Si «Buscar mi iPhone» estaba activo, el <b>Bloqueo de activación</b> pedirá el Apple ID.</p>']]},
+   {k:'RUTA 3',t:'Recuperación y DFU',d:'Cuando el iPhone no enciende.',lvl:['hard','Último recurso · borra datos'],tools:['Modo de recuperación','Modo DFU','Finder / iTunes'],steps:[
+     ['Forzar el modo','i-buttons','<p>Conecte el iPhone al computador. En el iPhone 8 o posterior: presione y suelte <b>Volumen +</b>, luego <b>Volumen −</b> y mantenga el <b>botón lateral</b> (Apple, s.f.-c).</p>'],
+     ['Modo de recuperación','i-recovery','<p>La pantalla muestra un cable y un computador. Finder o iTunes ofrecen <b>Actualizar</b> o <b>Restaurar</b>; este modo todavía usa iBoot.</p>'],
+     ['Modo DFU','i-dfu','<p>Si la recuperación falla, el modo DFU (pantalla negra) se comunica con el computador sin cargar iBoot y reinstala todo el firmware.</p>']],
     warn:'Solo se pueden instalar versiones que Apple firme en ese momento: no es posible bajar a versiones antiguas ni instalar sistemas modificados.'}]
  }
 };
 
 let os='android', route=0, step=0;
-const $=s=>document.querySelector(s);
+const fade=el=>{el.classList.remove('fade');void el.offsetWidth;el.classList.add('fade')};
+const cw=s=>s.replace(/\(([^()]*(?:s\.f\.|\d{4})[^()]*)\)/g,'<span class="cite">($1)</span>');
+const osName=()=>os==='android'?'Android':'iOS';
 
 function render(){
   const D=DATA[os];
   document.body.classList.toggle('ios',os==='ios');
-  document.querySelectorAll('.switch button').forEach(b=>b.setAttribute('aria-selected',b.dataset.os===os));
-  $('#t-intro').textContent=D.intro; $('#d-intro').textContent=D.introD;
-  $('#facts').innerHTML=D.facts.map(([ic,h,p])=>`<div class="card fact fade"><div class="ic">${ICON[ic]}</div><h3>${h}</h3><p>${p}</p></div>`).join('');
-  $('#t-anat').textContent=D.anat; $('#d-anat').textContent=D.anatD;
-  $('#parts').innerHTML=D.parts.map(([n,s,c],i)=>`<button class="part" role="listitem" data-i="${i}" style="background:${c};${i>=D.parts.length-2?'color:#0b1226':''}">${n}<small>${s}</small></button>`).join('');
-  document.querySelectorAll('.part').forEach(p=>p.onclick=()=>showPart(+p.dataset.i));
-  showPart(0);
-  $('#d-boot').textContent=D.bootD;
+  $$('.seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.os===os));
+  $('#gloss').innerHTML=D.gloss.map(([ic,h,p])=>`<div class="paper gl fade"><div class="ic">${I[ic]}</div><h4>${h}</h4><p>${cw(p)}</p></div>`).join('');
+  $('#arch-title').textContent=D.archT; $('#arch-intro').innerHTML=cw(D.archI);
+  $('#stack').innerHTML=D.layers.map(([n,s,c],i)=>`<button class="layer" data-i="${i}" style="background:${c}">${n}<small>${s}</small></button>`).join('');
+  $$('.layer').forEach(b=>b.onclick=()=>showLayer(+b.dataset.i)); showLayer(0);
+  $('#fig1cap').innerHTML=`<b>Figura 1.</b> <i>${D.archT}, organizada por capas.</i> Fuente: elaboración propia con base en ${D.src.f1}.`;
+  $('#parts-title').textContent=D.partsT;
+  $('#parts').innerHTML=D.parts.map(([n,s,c],i)=>`<button class="part" data-i="${i}" style="background:${c};${i===D.parts.length-1?'color:#14213d':''}">${n}<small>${s}</small></button>`).join('');
+  $$('.part').forEach(b=>b.onclick=()=>showPart(+b.dataset.i)); showPart(0);
+  $('#fig2cap').innerHTML=`<b>Figura 2.</b> <i>${D.partsT} en ${osName()}.</i> Fuente: elaboración propia con base en ${D.src.f2}.`;
+  $('#boot-intro').innerHTML=cw(D.bootI);
+  $('#fig3cap').innerHTML=`<b>Figura 3.</b> <i>Simulación de la cadena de arranque verificado en ${osName()}.</i> Fuente: elaboración propia con base en ${D.src.f3}.`;
   resetBoot();
-  $('#route-tabs').innerHTML=D.routes.map((r,i)=>`<button class="route-tab" role="tab" data-i="${i}"><span class="rt-k">${r.k}</span><b>${r.t}</b><span>${r.d}</span><br><span class="lvl ${r.lvl[0]}">${r.lvl[1]}</span></button>`).join('');
-  document.querySelectorAll('.route-tab').forEach(t=>t.onclick=()=>{route=+t.dataset.i;step=0;renderStep()});
+  $('#rtabs').innerHTML=D.routes.map((r,i)=>`<button class="rtab" role="tab" data-i="${i}"><span class="k">${r.k}</span><b>${r.t}</b><span class="d">${r.d}</span><br><span class="lvl ${r.lvl[0]}">${r.lvl[1]}</span></button>`).join('');
+  $$('.rtab').forEach(t=>t.onclick=()=>{route=+t.dataset.i;step=0;renderStep()});
+  $('#sim-phone').className='phone '+(os==='android'?'and':'iph');
+  $('#fig4cap').innerHTML=`<b>Figura 4.</b> <i>Rutas de instalación del sistema operativo en ${osName()}, paso a paso.</i> Las pantallas son ilustraciones esquemáticas. Fuente: elaboración propia con base en ${D.src.f4}.`;
   route=0;step=0;renderStep();
 }
+function showLayer(i){
+  const L=DATA[os].layers[i]; $$('.layer').forEach((b,j)=>b.classList.toggle('on',i===j));
+  const d=$('#ldetail'); fade(d);
+  d.innerHTML=`<h4>${L[0]}</h4><p>${L[3]}</p><ul>${L[4].map(x=>`<li>${x}</li>`).join('')}</ul>`;
+}
 function showPart(i){
-  document.querySelectorAll('.part').forEach((p,j)=>p.classList.toggle('on',i===j));
-  const d=$('#part-detail'); d.classList.remove('fade'); void d.offsetWidth; d.classList.add('fade');
-  d.innerHTML=DATA[os].parts[i][3];
+  $$('.part').forEach((b,j)=>b.classList.toggle('on',i===j));
+  const d=$('#pdetail'); fade(d); d.innerHTML=DATA[os].parts[i][3];
 }
 function renderStep(){
   const r=DATA[os].routes[route], s=r.steps[step];
-  document.querySelectorAll('.route-tab').forEach((t,i)=>t.setAttribute('aria-selected',i===route));
-  const el=$('#step'); el.classList.remove('fade'); void el.offsetWidth; el.classList.add('fade');
-  el.innerHTML=`<div class="step-head"><div class="step-n">${step+1}</div><h3>${s[0]}</h3></div><div class="step-body">${s[1]}</div>`+
-    (step===0?`<div class="tools">${r.tools.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`:'')+
-    (step===r.steps.length-1&&r.warn?`<div class="warnbox"><span aria-hidden="true">⚠</span><div>${r.warn}</div></div>`:'');
-  $('#prog').style.width=((step+1)/r.steps.length*100)+'%';
-  $('#dots').innerHTML=r.steps.map((_,i)=>`<button class="dot ${i===step?'on':''}" aria-label="Paso ${i+1}" data-i="${i}"></button>`).join('');
-  document.querySelectorAll('.dot').forEach(d=>d.onclick=()=>{step=+d.dataset.i;renderStep()});
-  $('#prev').disabled=step===0;
-  $('#next').textContent=step===r.steps.length-1?(route<DATA[os].routes.length-1?'Siguiente ruta →':'Volver al inicio ↺'):'Siguiente →';
+  $$('.rtab').forEach((t,i)=>t.setAttribute('aria-selected',i===route));
+  $('#tl').innerHTML=r.steps.map((x,i)=>`<li><button data-i="${i}" class="${i===step?'on':i<step?'done':''}" aria-label="Paso ${i+1}: ${x[0]}"><i>${i<step?'✓':i+1}</i><span>${x[0]}</span></button></li>`).join('');
+  $$('#tl button').forEach(b=>b.onclick=()=>{step=+b.dataset.i;renderStep()});
+  const v=$('#stepv'); fade(v);
+  v.innerHTML=`<div class="k">${r.k} · PASO ${step+1} DE ${r.steps.length}</div><h3>${s[0]}</h3><div class="body">${cw(s[2])}</div>`+
+   (step===0?`<div class="tools">${r.tools.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`:'')+
+   (step===r.steps.length-1&&r.warn?`<div class="warnbox">${I.warn}<div>${r.warn}</div></div>`:'');
+  screen($('#sim'),s[1]);
+  $('#prev').disabled=step===0&&route===0;
+  $('#next').textContent=step<r.steps.length-1?'Siguiente →':(route<DATA[os].routes.length-1?'Siguiente ruta →':'Ir a la comparación →');
 }
-$('#prev').onclick=()=>{if(step>0){step--;renderStep()}};
-$('#next').onclick=()=>{const r=DATA[os].routes[route];if(step<r.steps.length-1)step++;else{route=(route+1)%DATA[os].routes.length;step=0}renderStep()};
-document.querySelectorAll('.switch button').forEach(b=>b.onclick=()=>{os=b.dataset.os;render()});
+$('#prev').onclick=()=>{if(step>0)step--;else if(route>0){route--;step=DATA[os].routes[route].steps.length-1}renderStep()};
+$('#next').onclick=()=>{const R=DATA[os].routes,r=R[route];
+  if(step<r.steps.length-1)step++;else if(route<R.length-1){route++;step=0}else{$('#comparacion').scrollIntoView();return}
+  renderStep()};
+$$('.seg button').forEach(b=>b.onclick=()=>{if(os!==b.dataset.os){os=b.dataset.os;render()}});
 
-/* boot simulator */
 let timers=[];
 function resetBoot(){
   timers.forEach(clearTimeout);timers=[];
   const c=DATA[os].chain;
-  $('#chain').innerHTML=c.map(([b,s],i)=>`<div class="link" id="L${i}"><b>${b}</b><span>${s}</span><br><span class="st">en espera</span></div>`+(i<c.length-1?'<div class="arrow">›</div>':'')).join('');
-  $('#log').innerHTML='$ esperando encendido…';
-  $('#boot-ok').disabled=$('#boot-bad').disabled=false;
+  $('#chain').innerHTML=c.map(([ic,b,s],i)=>`<div class="lk" id="L${i}"><div class="lic">${I[ic]}</div><b>${b}</b><span>${s}</span><br><span class="st">en espera</span></div>`+(i<c.length-1?'<div class="arr">→</div>':'')).join('');
+  $('#log').textContent='$ esperando encendido…';
+  $('#b-ok').disabled=$('#b-bad').disabled=false;
 }
 function runBoot(bad){
-  resetBoot(); $('#boot-ok').disabled=$('#boot-bad').disabled=true;
+  resetBoot(); $('#b-ok').disabled=$('#b-bad').disabled=true;
   const c=DATA[os].chain, log=$('#log'), failAt=bad?2:-1; log.innerHTML='';
-  const add=(t,cls)=>{log.innerHTML+=`<span class="${cls||''}">${t}</span>\n`};
-  c.forEach((_,i)=>{
-    timers.push(setTimeout(()=>{
-      if(failAt>=0&&i>failAt)return;
-      const L=$('#L'+i); document.querySelectorAll('.link').forEach(x=>x.classList.remove('active')); L.classList.add('active');
-      if(i===failAt){L.classList.add('fail');L.querySelector('.st').textContent='firma inválida';
-        DATA[os].failMsg.forEach((m,k)=>add(m,k<2?'r':'y'));$('#boot-ok').disabled=$('#boot-bad').disabled=false;return}
-      L.classList.add('ok');L.querySelector('.st').textContent=i===c.length-1?'iniciado':'firma válida ✓';
-      add(i===0?`[${c[0][0]}] raíz de confianza cargada`:`[${c[i-1][0]}] verificando ${c[i][0]}… OK`,'g');
-      if(i===c.length-1){add('✓ sistema auténtico: arranque completo','g');$('#boot-ok').disabled=$('#boot-bad').disabled=false}
-    },450+i*750));
-  });
+  const add=(t,cl)=>{log.innerHTML+=`<span class="${cl}">${t}</span>\n`};
+  c.forEach((_,i)=>timers.push(setTimeout(()=>{
+    if(failAt>=0&&i>failAt)return;
+    $$('.lk').forEach(x=>x.classList.remove('act')); const L=$('#L'+i); L.classList.add('act');
+    if(i===failAt){L.classList.add('fail');L.querySelector('.st').textContent='firma inválida ✗';
+      DATA[os].fail.forEach((m,k)=>add(m,k<2?'r':'y'));$('#b-ok').disabled=$('#b-bad').disabled=false;return}
+    L.classList.add('ok');L.querySelector('.st').textContent=i===c.length-1?'iniciado':'firma válida ✓';
+    add(i===0?`[${c[0][1]}] raíz de confianza cargada`:`[${c[i-1][1]}] verificando ${c[i][1]}… OK`,'g');
+    if(i===c.length-1){add('✓ sistema auténtico: arranque completo','g');$('#b-ok').disabled=$('#b-bad').disabled=false}
+  },400+i*750)));
 }
-$('#boot-ok').onclick=()=>runBoot(false);
-$('#boot-bad').onclick=()=>runBoot(true);
-$('#boot-reset').onclick=resetBoot;
+$('#b-ok').onclick=()=>runBoot(false); $('#b-bad').onclick=()=>runBoot(true); $('#b-reset').onclick=resetBoot;
 
-/* quiz */
 const Q=[
- ['¿Qué ocurre al desbloquear el bootloader de un Android?',['Se actualiza a la última versión','Se borran todos los datos del equipo','Se instala LineageOS automáticamente'],1,'Desbloquear el bootloader borra la partición userdata por seguridad.'],
- ['En una actualización A/B de Android, ¿dónde se instala la versión nueva?',['En la ranura inactiva, mientras usas el equipo','En la partición userdata','En la memoria SIM'],0,'Se escribe en la ranura inactiva; al reiniciar, el equipo cambia de ranura.'],
- ['¿Por qué no se puede instalar cualquier versión de iOS en un iPhone?',['Porque el IPSW pesa demasiado','Porque Apple debe firmar la instalación para ese equipo','Porque iTunes no lo permite en Windows'],1,'Los servidores de Apple firman cada instalación para el ECID del equipo.'],
- ['¿Qué modo del iPhone permite reinstalar el firmware sin cargar iBoot?',['Modo avión','Modo recuperación','Modo DFU'],2,'El modo DFU se comunica con el computador sin pasar por iBoot.'],
- ['¿Qué tienen en común Android e iOS al encender?',['Ambos usan arranque verificado con firmas digitales','Ambos permiten ROM personalizadas','Ambos se instalan solo con fastboot'],0,'Los dos verifican cada etapa del arranque con firmas digitales.']
+ ['¿Qué ocurre al desbloquear el bootloader de un equipo Android?',['Se actualiza a la última versión','Se borran todos los datos del usuario','Se instala LineageOS automáticamente'],1,'Por seguridad, desbloquear el bootloader borra la partición userdata.'],
+ ['En una actualización A/B de Android, ¿dónde se escribe la versión nueva?',['En la ranura inactiva, mientras se usa el equipo','En la partición userdata','En la tarjeta SIM'],0,'Se escribe en la ranura inactiva y, al reiniciar, el equipo cambia de ranura.'],
+ ['¿Por qué no se puede instalar cualquier versión de iOS en un iPhone?',['Porque el archivo IPSW es muy pesado','Porque Apple debe firmar la instalación para ese equipo','Porque iTunes no funciona en Windows'],1,'Los servidores de Apple firman cada instalación para el ECID del equipo.'],
+ ['¿Qué modo del iPhone reinstala el firmware sin cargar iBoot?',['Modo avión','Modo de recuperación','Modo DFU'],2,'El modo DFU se comunica con el computador sin pasar por iBoot.'],
+ ['¿Qué principio comparten Android e iOS al encender el equipo?',['Arranque verificado mediante firmas digitales','Permitir ROM alternativas','Instalarse solo con fastboot'],0,'Ambos verifican cada etapa del arranque con firmas digitales.']
 ];
-let qi=0,score=0,answered=false;
+let qi=0,score=0,done=false;
 function renderQ(){
-  const [t,o]=Q[qi]; answered=false;
-  $('#q-text').textContent=`${qi+1}/${Q.length}. ${t}`;
-  $('#q-opts').innerHTML=o.map((x,i)=>`<button class="q-opt" data-i="${i}">${x}</button>`).join('');
-  $('#q-fb').textContent=''; $('#q-score').textContent=`Puntaje: ${score}/${Q.length}`;
-  $('#q-next').textContent=qi===Q.length-1?'Ver resultado':'Siguiente pregunta →'; $('#q-next').disabled=true;
-  document.querySelectorAll('.q-opt').forEach(b=>b.onclick=()=>answer(+b.dataset.i));
+  const [t,o]=Q[qi];
+  $('#qt').textContent=`Pregunta ${qi+1} de ${Q.length}. ${t}`;
+  $('#qo').innerHTML=o.map((x,i)=>`<button class="qb" data-i="${i}">${String.fromCharCode(97+i)}) ${x}</button>`).join('');
+  $('#qf').textContent='';$('#qs').textContent=`Puntaje: ${score}/${Q.length}`;
+  $('#qn').textContent=qi===Q.length-1?'Ver resultado':'Siguiente pregunta →';$('#qn').disabled=true;
+  $$('.qb').forEach(b=>b.onclick=()=>answer(+b.dataset.i));
 }
 function answer(i){
-  if(answered)return; answered=true;
   const ok=i===Q[qi][2]; if(ok)score++;
-  document.querySelectorAll('.q-opt').forEach((b,j)=>{b.disabled=true;if(j===Q[qi][2])b.classList.add('right');else if(j===i)b.classList.add('wrong')});
-  $('#q-fb').innerHTML=(ok?'<b style="color:var(--and)">¡Correcto!</b> ':'<b style="color:var(--bad)">No exactamente.</b> ')+Q[qi][3];
-  $('#q-score').textContent=`Puntaje: ${score}/${Q.length}`; $('#q-next').disabled=false;
+  $$('.qb').forEach((b,j)=>{b.disabled=true;if(j===Q[qi][2])b.classList.add('right');else if(j===i)b.classList.add('wrong')});
+  $('#qf').innerHTML=(ok?'<b style="color:var(--and)">Correcto.</b> ':'<b style="color:var(--bad)">Incorrecto.</b> ')+Q[qi][3];
+  $('#qs').textContent=`Puntaje: ${score}/${Q.length}`;$('#qn').disabled=false;
 }
-let finished=false;
-$('#q-next').onclick=()=>{
-  if(finished){finished=false;qi=0;score=0;renderQ();return}
-  if(qi<Q.length-1){qi++;renderQ()}
-  else{finished=true;$('#q-text').textContent=`Resultado: ${score} de ${Q.length}`;$('#q-opts').innerHTML='';
-    $('#q-fb').textContent=score===Q.length?'¡Excelente! Dominas la instalación de sistemas operativos móviles.':'Repasa las secciones de rutas y arranque verificado y vuelve a intentarlo.';
-    $('#q-next').textContent='Reintentar ↺'}
+$('#qn').onclick=()=>{
+  if(done){done=false;qi=0;score=0;renderQ();return}
+  if(qi<Q.length-1){qi++;renderQ();return}
+  done=true;$('#qt').textContent=`Resultado: ${score} de ${Q.length}`;$('#qo').innerHTML='';
+  $('#qf').textContent=score===Q.length?'Excelente: domina los conceptos de instalación de sistemas operativos móviles.':'Repase las secciones 3 y 4 y vuelva a intentarlo.';
+  $('#qn').textContent='Reintentar ↺';
 };
+
+const links=$$('#toc a');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+links.forEach(a=>io.observe($(a.getAttribute('href'))));
+
+screen($('#hero-a'),'a-home'); screen($('#hero-i'),'i-home');
 render(); renderQ();
 </script>
 </body>
